@@ -52,7 +52,7 @@ public class CollumnMapping {
 		for(int i=0;i<coldefObj.size();i++) {
 			if(coldefObj.get(i).getNoOfHeaderLevel()==1) {
 				Map<String,Object> cMap=new HashMap<String,Object>();
-				cMap.put("fieldName", coldefObj.get(i).getColumnId());
+				cMap.put("field", coldefObj.get(i).getColumnId());
 				cMap.put("headerName", coldefObj.get(i).getHeaderLevel3());
 				finalList.add(cMap);
 			}
@@ -68,7 +68,7 @@ public class CollumnMapping {
 						List<HashMap<String,Object>> lt2=new ArrayList<HashMap<String,Object>>();
 						Map<String,Object> cMap=new HashMap<String,Object>();
 						Map<String,Object> cMap2=new HashMap<String,Object>();
-						cMap2.put("fieldName", coldefObj.get(i).getColumnId());
+						cMap2.put("field", coldefObj.get(i).getColumnId());
 						cMap2.put("headerName", coldefObj.get(i).getHeaderLevel3());
 //						cMap.put("fieldName", coldefObj.get(i).getColumnId());
 						cMap.put("headerName", coldefObj.get(i).getHeaderLevel2());
@@ -105,7 +105,7 @@ public class CollumnMapping {
 								HashMap<String,Object> subParent=childListMap.get(k);
 								List<HashMap<String,Object>> subchildListMap=(List<HashMap<String, Object>>) childListMap.get(k).get("children");
 								Map<String,Object> cMap=new HashMap<String,Object>();
-								cMap.put("fieldName", coldefObj.get(i).getColumnId());
+								cMap.put("field", coldefObj.get(i).getColumnId());
 								cMap.put("headerName", coldefObj.get(i).getHeaderLevel3());
 								subchildListMap.add((HashMap<String, Object>) cMap);
 								subParent.put("children", subchildListMap);
@@ -130,9 +130,9 @@ public class CollumnMapping {
 							List<HashMap<String,Object>> lt2=new ArrayList<HashMap<String,Object>>();
 							Map<String,Object> cMap=new HashMap<String,Object>();
 							Map<String,Object> cMap2=new HashMap<String,Object>();
-							cMap2.put("fieldName", coldefObj.get(i).getColumnId());
+							cMap2.put("field", coldefObj.get(i).getColumnId());
 							cMap2.put("headerName", coldefObj.get(i).getHeaderLevel3());
-							cMap.put("fieldName", coldefObj.get(i).getColumnId());
+							cMap.put("field", coldefObj.get(i).getColumnId());
 							cMap.put("headerName", coldefObj.get(i).getHeaderLevel2());
 							lt2.add((HashMap<String, Object>) cMap2);
 							cMap.put("children", lt2);
@@ -160,7 +160,7 @@ public class CollumnMapping {
 					List<HashMap<String,Object>> lt2=new ArrayList<HashMap<String,Object>>();
 					Map<String,Object> cMap=new HashMap<String,Object>();
 					Map<String,Object> cMap2=new HashMap<String,Object>();
-					cMap2.put("fieldName", coldefObj.get(i).getColumnId());
+					cMap2.put("field", coldefObj.get(i).getColumnId());
 					cMap2.put("headerName", coldefObj.get(i).getHeaderLevel3());
 					lt2.add((HashMap<String, Object>) cMap2);
 					cMap.put("headerName", coldefObj.get(i).getHeaderLevel2());

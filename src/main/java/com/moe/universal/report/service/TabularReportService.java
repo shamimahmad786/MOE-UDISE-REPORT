@@ -75,7 +75,7 @@ public class TabularReportService {
 		if(query !=null) {
 			result=nativeRepository.executeQueries(query);
 			result.setDisplaySet(CollumnMapping.getColumnDescription(result.getColumnName()));
-			result.setTableHader(CollumnMapping.getColumn(columnDefinationRepository,1001));
+			result.setTableHader(CollumnMapping.getColumn(columnDefinationRepository,1002));
 
 			
 			
