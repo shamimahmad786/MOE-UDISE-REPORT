@@ -32,4 +32,9 @@ public class MasterController {
 	public ResponseEntity<?>  getBlockYearWise(@RequestBody String data) {
 	return ResponseEntity.ok(masterService.getBlockYearWise(data));
   }
+	
+	
+	
+	
+	
 }

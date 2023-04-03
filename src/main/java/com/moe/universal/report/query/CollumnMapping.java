@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.moe.universal.report.modal.ColumnDefination;
+import com.moe.universal.report.repository.ColumnDefinationRepository;
 
 public class CollumnMapping {
 
@@ -33,6 +37,157 @@ public class CollumnMapping {
 		    getColumnDefination(mapList,String.valueOf(e));
 		  });
 		  return mapList;
+	}
+	
+	
+	public static List<Map<String,Object>>  getColumn(ColumnDefinationRepository columnDefinationRepository,Integer tableId) {
+		
+		System.out.println("TableId--->"+tableId);
+		
+		List<ColumnDefination> coldefObj = columnDefinationRepository.findAllByTableId(tableId);
+		
+		System.out.println("size of column defination--->"+coldefObj.size());
+		
+		List<Map<String,Object>> finalList=new ArrayList<Map<String,Object>>();
+		for(int i=0;i<coldefObj.size();i++) {
+			if(coldefObj.get(i).getNoOfHeaderLevel()==1) {
+				Map<String,Object> cMap=new HashMap<String,Object>();
+				cMap.put("fieldName", coldefObj.get(i).getColumnId());
+				cMap.put("headerName", coldefObj.get(i).getHeaderLevel3());
+				finalList.add(cMap);
+			}
+		}
+		
+		for(int i=0;i<coldefObj.size();i++) {
+			if(coldefObj.get(i).getNoOfHeaderLevel()==3) {
+				 Integer headerLevel3MatchCondition=0;
+				 
+				 if(finalList.size()==0) {
+					 HashMap<String,Object> hs=new HashMap<String,Object>();
+						List<HashMap<String,Object>> lt=new ArrayList<HashMap<String,Object>>();
+						List<HashMap<String,Object>> lt2=new ArrayList<HashMap<String,Object>>();
+						Map<String,Object> cMap=new HashMap<String,Object>();
+						Map<String,Object> cMap2=new HashMap<String,Object>();
+						cMap2.put("fieldName", coldefObj.get(i).getColumnId());
+						cMap2.put("headerName", coldefObj.get(i).getHeaderLevel3());
+//						cMap.put("fieldName", coldefObj.get(i).getColumnId());
+						cMap.put("headerName", coldefObj.get(i).getHeaderLevel2());
+						lt2.add((HashMap<String, Object>) cMap2);
+						cMap.put("children", lt2);
+						
+						hs.put("headerName", coldefObj.get(i).getHeaderLevel1());
+						
+						lt.add((HashMap<String, Object>) cMap);
+						hs.put("children", lt);
+						
+						
+						
+						finalList.add(hs);
+				 }else {
+				 
+					 System.out.println(finalList.size());
+				for(int j=0;j<finalList.size();j++) {
+					
+//					System.out.println(coldefObj.get(i).getHeaderLevel1()+"------------"+String.valueOf(finalList.get(j).get("headerName")));
+					
+					if(coldefObj.get(i).getHeaderLevel1().equalsIgnoreCase(String.valueOf(finalList.get(j).get("headerName")))) {
+						headerLevel3MatchCondition=1;
+						HashMap<String,Object> parentToInsert= (HashMap<String, Object>) finalList.get(j);
+						
+						System.out.println(finalList.get(j));
+						
+						List<HashMap<String,Object>> childListMap=(List<HashMap<String, Object>>) finalList.get(j).get("children");
+						 Integer headerLevel2MatchCondition=0;		
+						for(int k=0;k<childListMap.size();k++) {
+							if(String.valueOf(childListMap.get(k).get("headerName")).equalsIgnoreCase(coldefObj.get(i).getHeaderLevel2())) {
+								headerLevel2MatchCondition=1;
+								List<HashMap<String,Object>> subParentLis =new ArrayList<HashMap<String,Object>>();
+								HashMap<String,Object> subParent=childListMap.get(k);
+								List<HashMap<String,Object>> subchildListMap=(List<HashMap<String, Object>>) childListMap.get(k).get("children");
+								Map<String,Object> cMap=new HashMap<String,Object>();
+								cMap.put("fieldName", coldefObj.get(i).getColumnId());
+								cMap.put("headerName", coldefObj.get(i).getHeaderLevel3());
+								subchildListMap.add((HashMap<String, Object>) cMap);
+								subParent.put("children", subchildListMap);
+//								subParentLis.add(subParent);
+								childListMap.set(k, subParent);
+								
+								
+//								parentToInsert.put("children", subParentLis);
+								parentToInsert.put("children", childListMap);
+								
+//								System.out.println("Size---->"+finalList.size()+"-------------"+parentToInsert);
+								
+								finalList.set(j, parentToInsert);
+							}
+						}
+//						
+						if(headerLevel2MatchCondition==0) {
+							 HashMap<String,Object> hs=new HashMap<String,Object>();
+							HashMap<String,Object> firstLevelObj= (HashMap<String,Object>)finalList.get(j);
+							List<HashMap<String,Object>> secondList=new ArrayList<HashMap<String,Object>>();
+							List<HashMap<String,Object>> lt=new ArrayList<HashMap<String,Object>>();
+							List<HashMap<String,Object>> lt2=new ArrayList<HashMap<String,Object>>();
+							Map<String,Object> cMap=new HashMap<String,Object>();
+							Map<String,Object> cMap2=new HashMap<String,Object>();
+							cMap2.put("fieldName", coldefObj.get(i).getColumnId());
+							cMap2.put("headerName", coldefObj.get(i).getHeaderLevel3());
+							cMap.put("fieldName", coldefObj.get(i).getColumnId());
+							cMap.put("headerName", coldefObj.get(i).getHeaderLevel2());
+							lt2.add((HashMap<String, Object>) cMap2);
+							cMap.put("children", lt2);
+							lt.add((HashMap<String, Object>) cMap);
+							
+							
+							childListMap.add((HashMap<String, Object>) cMap);
+							
+							parentToInsert.put("children", childListMap);
+							
+							
+							finalList.set(j, parentToInsert);
+						}
+	
+					}
+					
+					
+					
+					
+				}
+				
+				if(headerLevel3MatchCondition==0) {
+					HashMap<String,Object> hs=new HashMap<String,Object>();
+					List<HashMap<String,Object>> lt=new ArrayList<HashMap<String,Object>>();
+					List<HashMap<String,Object>> lt2=new ArrayList<HashMap<String,Object>>();
+					Map<String,Object> cMap=new HashMap<String,Object>();
+					Map<String,Object> cMap2=new HashMap<String,Object>();
+					cMap2.put("fieldName", coldefObj.get(i).getColumnId());
+					cMap2.put("headerName", coldefObj.get(i).getHeaderLevel3());
+					lt2.add((HashMap<String, Object>) cMap2);
+					cMap.put("headerName", coldefObj.get(i).getHeaderLevel2());
+					cMap.put("children", lt2);
+                    hs.put("headerName", coldefObj.get(i).getHeaderLevel1());
+					lt.add((HashMap<String, Object>) cMap);
+					hs.put("children", lt);
+					
+					System.out.println("hs---->"+hs);
+					
+					finalList.add(hs);
+				}
+				
+			}
+				
+				
+//				Map<String,Object> cMap=new HashMap<String,Object>();
+//				cMap.put("fieldName", coldefObj.get(i).getColumnId());
+//				cMap.put("headerName", coldefObj.get(i).getHeaderLevel3());
+//				finalList.add(cMap);
+			}
+		}
+		
+		System.out.println("finalList--->"+finalList);
+		
+		
+return finalList;
 	}
 	
 	public static List<HashMap<String, Object>> getColumnDefination(List<HashMap<String, Object>> mapLis,String columnName){

@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moe.universal.report.pojo.InputDependency;
 import com.moe.universal.report.query.CollumnMapping;
 import com.moe.universal.report.query.EnrollmentQuery;
+import com.moe.universal.report.repository.ColumnDefinationRepository;
 import com.moe.universal.report.util.NativeRepository;
 import com.moe.universal.report.util.QueryResult;
 
@@ -28,6 +29,9 @@ public class TabularReportService {
 	
 	@Autowired
 	NativeRepository nativeRepository;
+	
+	@Autowired
+	ColumnDefinationRepository columnDefinationRepository;
 	
 	public QueryResult getTabularJson(String dependency) {
 		String query=null;
@@ -71,6 +75,11 @@ public class TabularReportService {
 		if(query !=null) {
 			result=nativeRepository.executeQueries(query);
 			result.setDisplaySet(CollumnMapping.getColumnDescription(result.getColumnName()));
+			result.setTableHader(CollumnMapping.getColumn(columnDefinationRepository,1001));
+
+			
+			
+			
 			result.setTemplateType(1);
 			
 			List<HashMap<String,String>> lt=new ArrayList<HashMap<String,String>>();
