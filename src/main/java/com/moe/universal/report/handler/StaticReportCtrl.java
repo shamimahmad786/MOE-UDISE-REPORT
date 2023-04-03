@@ -31,7 +31,7 @@ public class StaticReportCtrl {
 //	  public QueryResult getTabularData(@RequestBody String data) {
 		public ResponseEntity<?>  getTabularData(@RequestBody String data) {
 		
-//		System.out.println("Tabular data--->"+tabularReportService.getTabularJson(data));
+		System.out.println("Tabular data--->");
 		
 		return ResponseEntity.ok(tabularReportService.getTabularJson(data));
 		

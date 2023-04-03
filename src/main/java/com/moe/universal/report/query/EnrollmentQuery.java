@@ -46,6 +46,15 @@ public class EnrollmentQuery {
 //				 nativeRepository.executeQueries(query);
 //			 }
 			 
+		}else if(String.valueOf(dependency.get("mapId")).equalsIgnoreCase("1002")) {
+			
+			qbuildObj.setFieldSet(" sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 1) as primary_boys_govt , sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 1) as upper_primary_boys_govt, sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 1) as secondary_boys_govt, sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 1) as higher_secondary_boys_govt,  sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 2) as primary_boys_govt_aided , sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 2) as upper_primary_boys_govt_aided, sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 2) as secondary_boys_govt_aided, sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 2) as higher_secondary_boys_govt,  sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 3) as primary_boys_private , sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 3) as upper_primary_boys_govt_private, sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 3) as secondary_boys_govt_private, sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 3) as higher_secondary_boys_private,  sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 4) as primary_boys_private , sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 4) as upper_primary_boys_govt_private, sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 4) as secondary_boys_govt_private, sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 4) as higher_secondary_boys_private,  sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 1) as primary_girls_govt , sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 1) as upper_primary_girls_govt, sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 1) as secondary_girls_govt, sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 1) as higher_secondary_girls_govt,  sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 2) as primary_girls_govt_aided , sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 2) as upper_primary_girls_govt_aided, sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 2) as secondary_girls_govt_aided, sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 2) as higher_secondary_girls_govt,  sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 3) as primary_girls_private , sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 3) as upper_primary_girls_govt_private, sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 3) as secondary_girls_govt_private, sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 3) as higher_secondary_girls_private,  sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 4) as primary_girls_private , sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 4) as upper_primary_girls_govt_private, sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 4) as secondary_girls_govt_private, sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 4) as higher_secondary_girls_private ");
+			qbuildObj.setTableName("udisereportnew.enrollment_social_categorywise esc");
+			qbuildObj.setIsCondition("Y");
+			qbuildObj.setCondition(" 1=1 ");
+			getDynamicQueryPojo(qbuildObj,dependency,dependentValue);
+			qbuildObj.setGroupSet(" grouping sets ( ("+qbuildObj.getGroupSet()+"), () ) ");
+		    query=qbObj.gereratQuery(qbuildObj);
 		}
 		
 		
@@ -91,7 +100,7 @@ public class EnrollmentQuery {
 		
 		
 		if(categoryType.equalsIgnoreCase("0")) {
-			qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", social_category_name ");
+			qbuildObj.setFieldSet( " social_category_name ," + qbuildObj.getFieldSet());
 			qbuildObj.setIsGroup("Y");
 			
 			System.out.println("Group set--->"+qbuildObj.getGroupSet());
@@ -114,7 +123,7 @@ public class EnrollmentQuery {
 		}else if(categoryType.equalsIgnoreCase("1") || categoryType.equalsIgnoreCase("2") || categoryType.equalsIgnoreCase("3") || categoryType.equalsIgnoreCase("4") ) {
 			qbuildObj.setIsCondition("Y");
 			qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependency.get("cateoryType"));
-			qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", social_category_name ");
+			qbuildObj.setFieldSet(" social_category_name ," +qbuildObj.getFieldSet());
 			qbuildObj.setIsGroup("Y");
 			if(qbuildObj.getGroupSet()==null || qbuildObj.getGroupSet().isEmpty()) {
 				qbuildObj.setGroupSet("social_category_name");
@@ -141,7 +150,7 @@ System.out.println("managementValue--->"+dependency.get("managementValue"));
 			if(!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 				qbuildObj.setIsCondition("Y");
 				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
-				qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", broad_management_name ");
+				qbuildObj.setFieldSet(" broad_management_name , " +qbuildObj.getFieldSet());
 				qbuildObj.setIsGroup("Y");
 				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
 				qbuildObj.setIsOrderBy("Y");
@@ -149,7 +158,7 @@ System.out.println("managementValue--->"+dependency.get("managementValue"));
 			}else if(String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 //				qbuildObj.setIsCondition("Y");
 //				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
-				qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", broad_management_name ");
+				qbuildObj.setFieldSet( " broad_management_name ," +qbuildObj.getFieldSet());
 				qbuildObj.setIsGroup("Y");
 //				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
 				qbuildObj.setIsOrderBy("Y");
@@ -186,7 +195,7 @@ System.out.println("managementValue--->"+dependency.get("managementValue"));
 			}else if(String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 //				qbuildObj.setIsCondition("Y");
 //				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_mgmt_center_id in ("+dependency.get("managementValue")+")");	
-				qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", sch_mgmt_center_name ");
+				qbuildObj.setFieldSet( " sch_mgmt_center_name ," +qbuildObj.getFieldSet());
 				qbuildObj.setIsGroup("Y");
 				
 				if(qbuildObj.getGroupSet() !=null) {

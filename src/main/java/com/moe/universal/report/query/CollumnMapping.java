@@ -358,9 +358,197 @@ public class CollumnMapping {
         	hs.put("parentType", "Y");
         	hs.put("parentName", "Class-12");
             break;
+            
+        case "primary_boys_govt":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Primary");
+            break;
+            
+        case "primary_girls_govt":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Primary");
+            break;  
+            
+        case "upper_primary_boys_govt":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Upper Primary");
+            break;
+            
+        case "upper_primary_girls_govt":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Upper Primary");
+            break;    
+            
+        case "secondary_boys_govt":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Secondary");
+            break;
+            
+        case "secondary_girls_govt":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Secondary");
+            break;  
+            
+        case "higher_secondary_boys_govt":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Higher Secondary");
+            break;
+            
+        case "higher_secondary_girls_govt":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt higher Secondary");
+            break;
+        case "primary_boys_govt_aided":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Primary");
+            break;
+            
+        case "primary_girls_govt_aided":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Primary");
+            break;  
+
+    case "upper_primary_boys_govt_aided":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 130);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Upper Primary");
+            break;
+            
+        case "upper_primary_girls_govt_aided":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 150);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Upper Primary");
+            break; 
+       case "secondary_boys_govt_aided":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 110);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Secondary");
+            break;
+            
+        case "secondary_girls_govt_aided":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 110);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Secondary");
+            break;
+            
+        case "higher_secondary_boys_govt_aided":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 110);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Higher Secondary");
+            break;
+            
+        case "higher_secondary_girls_govt_aided":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 110);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Aided Higher Secondary");
+            break;
+
+
+   case "primary_boys_private":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Private Primary");
+            break;
+            
+        case "primary_girls_private":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Private Primary");
+            break; 
+   case "upper_primary_boys_govt_private":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 110);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Private Upper Primary Girls");
+            break;
+            
+        case "upper_primary_girls_govt_private":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 110);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Govt Private Upper Primary Girls");
+            break; 
+   case "secondary_boys_govt_private":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 110);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Private Secondary Girls");
+            break;
+            
+        case "secondary_girls_govt_private":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 100);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Private Secondary Girls");
+            break; 
+     case "higher_secondary_boys_private":
+        	hs.put("columnName", "Boys");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 130);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Private Higher Secondary Girls");
+            break;
+            
+        case "higher_secondary_girls_private":
+        	hs.put("columnName", "Girls");
+        	hs.put("filterType", "Y");
+        	hs.put("width", 130);
+        	hs.put("parentType", "Y");
+        	hs.put("parentName", "Private Higher Secondary Girls");
+            break;
         }
 	    mapLis.add(hs);
-//	    System.out.println(mapLis);
+	    System.out.println(mapLis);
 		return mapLis; 
 	}
 		
