@@ -15,6 +15,8 @@ public class QueryResult {
 	private Integer templateType; 
 	private List<HashMap<String, String>> filterData;
 	
+	private List<Map<String, Object>> tableHader;
+	
 	public List<Object> getColumnName() {
 		return columnName;
 	}
@@ -60,6 +62,16 @@ public class QueryResult {
 	}
 	public void setFilterData(List<HashMap<String, String>> filterData) {
 		this.filterData = filterData;
+	}
+	
+	
+	
+	
+	public List<Map<String, Object>> getTableHader() {
+		return tableHader;
+	}
+	public void setTableHader(List<Map<String, Object>> tableHader) {
+		this.tableHader = tableHader;
 	}
 	@Override
 	public String toString() {

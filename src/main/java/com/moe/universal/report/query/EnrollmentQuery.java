@@ -145,7 +145,7 @@ public class EnrollmentQuery {
 				}
 		}else if(managementType.equalsIgnoreCase("1")) {
 			
-System.out.println("managementValue--->"+dependency.get("managementValue"));
+//System.out.println("managementValue--->"+dependency.get("managementValue"));
 			
 			if(!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 				qbuildObj.setIsCondition("Y");
@@ -185,10 +185,10 @@ System.out.println("managementValue--->"+dependency.get("managementValue"));
 				
 				if(qbuildObj.getGroupSet() !=null) {
 					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
-					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,sch_mgmt_center_name ");
 				}else {
 					qbuildObj.setGroupSet("sch_mgmt_center_name ");
-					qbuildObj.setOrderBy(" broad_management_name ");
+					qbuildObj.setOrderBy(" sch_mgmt_center_name ");
 				}
 				
 				
@@ -200,10 +200,10 @@ System.out.println("managementValue--->"+dependency.get("managementValue"));
 				
 				if(qbuildObj.getGroupSet() !=null) {
 				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
-				qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+				qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,sch_mgmt_center_name ");
 				}else {
 					qbuildObj.setGroupSet( " sch_mgmt_center_name ");
-					qbuildObj.setOrderBy(" broad_management_name ");
+					qbuildObj.setOrderBy(" sch_mgmt_center_name ");
 				}
 				qbuildObj.setIsOrderBy("Y");
 				
