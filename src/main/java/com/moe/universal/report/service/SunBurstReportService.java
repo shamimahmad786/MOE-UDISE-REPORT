@@ -55,7 +55,7 @@ public class SunBurstReportService {
 			result=nativeRepository.executeQueries(query);
 			//result.setDisplaySet(CollumnMapping.getColumnDescription(result.getColumnName()));
 			System.out.println( "MapId " +Integer.parseInt(dependentObj.get("mapId").toString()));
-			result.setTableHader(ColumnMappingForDataRepresent.getColumnMappingSunBurst(columnDefinationRepository,dependentObj.get("mapId") != null? Integer.parseInt(dependentObj.get("mapId").toString()):0));
+			result.setTableHader1(ColumnMappingForDataRepresent.getColumnMappingSunBurst(columnDefinationRepository,dependentObj.get("mapId") != null? Integer.parseInt(dependentObj.get("mapId").toString()):0));
 			result.setTemplateType(1);
 			List<HashMap<String,String>> lt=new ArrayList<HashMap<String,String>>();
 			HashMap<String,String> hs=new HashMap<String,String>();

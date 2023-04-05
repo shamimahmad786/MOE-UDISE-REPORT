@@ -3,8 +3,11 @@ package com.moe.universal.report.util;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Component;
+
+import com.moe.universal.report.pojo.NodeMapping;
 
 @Component
 public class QueryResult {
@@ -16,7 +19,16 @@ public class QueryResult {
 	private List<HashMap<String, String>> filterData;
 	
 	private List<Map<String, Object>> tableHader;
+	private Set<NodeMapping> tableHader1;
 	
+	
+	
+	public Set<NodeMapping> getTableHader1() {
+		return tableHader1;
+	}
+	public void setTableHader1(Set<NodeMapping> tableHader1) {
+		this.tableHader1 = tableHader1;
+	}
 	public List<Object> getColumnName() {
 		return columnName;
 	}
