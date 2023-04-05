@@ -44,28 +44,6 @@ public class ColumnMappingForDataRepresent {
 						setList.add(nodeLavel3);
 					}
 				}
-				
-//				if(coldefObj.get(i).getHeaderLevel1().equals("Primary")) {
-//					Map<String,Object> cMap=new HashMap<String,Object>();
-//					if(i==0) {
-//						cMap.put("id", "");
-//						cMap.put("parent", '0');
-//						cMap.put("name", coldefObj.get(i).getHeaderLevel1().toString());
-//						finalList.add(cMap);
-//					}else if(i==1) {
-//						cMap.put("id", i);
-//						cMap.put("parent", '0');
-//						cMap.put("name", coldefObj.get(i).getHeaderLevel2());
-//						finalList.add(cMap);
-//					}else {
-//						cMap.put("id", i);
-//						cMap.put("parent", '1');
-//						cMap.put("name", coldefObj.get(i).getHeaderLevel3().toString());
-//						cMap.put("value", 1202);
-//						finalList.add(cMap);
-//					}
-//					
-//				}	
 			}
 		}
 		return setList;
