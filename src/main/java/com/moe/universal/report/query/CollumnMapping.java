@@ -11,29 +11,10 @@ import com.moe.universal.report.repository.ColumnDefinationRepository;
 
 public class CollumnMapping {
 
-//	public static	List<HashMap<String,String>> commomHeadersFromExcel =[{"hhh":"hh"}];
-//	List<Map<String, Integer>> myBooks = [
-//	                                      {"id": 1, "name": "HTML and CSS", "price": 1100},
-//	                                      {"id": 2, "name": "Python", "price": 2100},
-//	                                      {"id": 3, "name": "Dart", "price": 100},
-//	                                      {"id": 4, "name": "Java", "price": 100},
-//	                                      {"id": 5, "name": "JavaScript", "price": 110},
-//	                                      {"id": 6, "name": "Swift", "price": 90},
-//	                                      {"id": 7, "name": "C++", "price": 85},
-//	                                      {"id": 8, "name": "C#", "price": 58},
-//	                                      {"id": 9, "name": "Python", "price": 100},
-//	                                      {"id": 10, "name": "Ruby", "price": 55},
-//	                                      {"id": 11, "name": "FrameWork", "price": 125}    
-//	                                    ];
-	
 	public static List<HashMap<String, Object>> getColumnDescription(List<Object> stringList) {
-//		List<String> stringList = new ArrayList<String>();
 
 		  List<HashMap<String, Object>> mapList = new  ArrayList<HashMap<String, Object>>();
-
 		  stringList.forEach((e)-> {
-//		    Map<String, Object> item = new {"name": e, "selected": false};
-//		    mapList.add(item);
 		    getColumnDefination(mapList,String.valueOf(e));
 		  });
 		  return mapList;
@@ -59,7 +40,7 @@ public class CollumnMapping {
 		}
 		
 		for(int i=0;i<coldefObj.size();i++) {
-			if(coldefObj.get(i).getNoOfHeaderLevel()==3) {
+//			if(coldefObj.get(i).getNoOfHeaderLevel()==3) {
 				 Integer headerLevel3MatchCondition=0;
 				 
 				 if(finalList.size()==0) {
@@ -181,7 +162,7 @@ public class CollumnMapping {
 //				cMap.put("fieldName", coldefObj.get(i).getColumnId());
 //				cMap.put("headerName", coldefObj.get(i).getHeaderLevel3());
 //				finalList.add(cMap);
-			}
+//			}
 		}
 		
 		System.out.println("finalList--->"+finalList);

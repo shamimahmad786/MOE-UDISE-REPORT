@@ -5,6 +5,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,18 +27,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api")
 public class StaticReportCtrl {
 	@Autowired
-	TabularReportService    tabularReportService; 
-	
-	@RequestMapping(value = "/getTabularData", method = RequestMethod.POST)
-//	  public QueryResult getTabularData(@RequestBody String data) {
-		public ResponseEntity<?>  getTabularData(@RequestBody String data) {
-		
-		System.out.println("Tabular data--->");
+	TabularReportService tabularReportService;
+
+	@PostMapping(value = "/getTabularData")
+	public ResponseEntity<?> getTabularData(@RequestBody String data) {
 		
 		return ResponseEntity.ok(tabularReportService.getTabularJson(data));
-		
-//		  return ServerResponse.ok()
-////	                .contentType(MediaType.APPLICATION_JSON)
-//	                .syncBody(tabularReportService.getTabularJson(data));
-	  }
+	}
 }
