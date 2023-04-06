@@ -15,13 +15,13 @@ if(dependency.getIsCondition().equalsIgnoreCase("Y")) {
 		}
 		
 System.out.println("dependency.getIsGroup()--->"+dependency.getIsGroup());
-		if(dependency.getIsGroup().equalsIgnoreCase("Y")) {
+		if(dependency.getIsGroup() != null && dependency.getIsGroup().equalsIgnoreCase("Y")) {
 			query +=" group by  "+	dependency.getGroupSet();
 		}
 		
 		
 		System.out.println("dependency.getIsOrderBy()--->"+dependency.getIsOrderBy());
-		if(dependency.getIsOrderBy().equalsIgnoreCase("Y")) {
+		if(dependency.getIsOrderBy() != null &&dependency.getIsOrderBy().equalsIgnoreCase("Y")) {
 			query += "  order by "+	dependency.getOrderBy();
 		}
 		

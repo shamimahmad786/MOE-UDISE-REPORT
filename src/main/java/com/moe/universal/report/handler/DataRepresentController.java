@@ -1,6 +1,7 @@
 package com.moe.universal.report.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,10 +21,13 @@ public class DataRepresentController {
 	@Autowired
 	SunBurstReportService sunBurstReportService;
 	
+	@Value("${jsonFileLocation}")
+	private String jsonFilePath;
+	
 	@PostMapping(value = "/getSunBurstData")
 	public ResponseEntity<?> fetchSunBurstData(@RequestBody String data){
 		System.out.println("dsklfldfkgfghmlk");
-		QueryResult result = sunBurstReportService.getSunBurstDataService(data);
+		QueryResult result = sunBurstReportService.getSunBurstDataService(data ,jsonFilePath);
 		return ResponseEntity.ok(result);
 		
 	}
