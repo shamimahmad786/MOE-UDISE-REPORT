@@ -1,13 +1,16 @@
 package com.moe.universal.report.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.moe.universal.report.pojo.NodeMapping;
+import com.moe.universal.report.pojo.SunBurstChartBean;
 
 @Component
 public class QueryResult {
@@ -20,8 +23,16 @@ public class QueryResult {
 	
 	private List<Map<String, Object>> tableHader;
 	private Map<NodeMapping,NodeMapping> tableHader1;
+	private Set<SunBurstChartBean> data;
 	
-
+	
+	
+	public Set<SunBurstChartBean> getData() {
+		return data;
+	}
+	public void setData(Set<SunBurstChartBean> data) {
+		this.data = data;
+	}
 	public Map<NodeMapping, NodeMapping> getTableHader1() {
 		return tableHader1;
 	}

@@ -54,7 +54,7 @@ public class TabularReportService {
 		if(query !=null) {
 			result=nativeRepository.executeQueries(query);
 			//result.setDisplaySet(CollumnMapping.getColumnDescription(result.getColumnName()));
-			result.setTableHader(CollumnMapping.getColumn(columnDefinationRepository,1002));
+			result.setTableHader(CollumnMapping.getColumn(columnDefinationRepository,Integer.valueOf(dependentObj.get("mapId").toString())));
 			result.setTemplateType(1);
 			List<HashMap<String,String>> lt=new ArrayList<HashMap<String,String>>();
 			HashMap<String,String> hs=new HashMap<String,String>();

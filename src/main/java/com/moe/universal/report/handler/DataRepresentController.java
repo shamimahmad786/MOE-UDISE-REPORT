@@ -1,7 +1,14 @@
 package com.moe.universal.report.handler;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,10 +31,15 @@ public class DataRepresentController {
 	@Value("${jsonFileLocation}")
 	private String jsonFilePath;
 	
+	@Autowired
+	ResourceLoader resourceLoader;
+	
 	@PostMapping(value = "/getSunBurstData")
-	public ResponseEntity<?> fetchSunBurstData(@RequestBody String data){
+	public ResponseEntity<?> fetchSunBurstData(@RequestBody String data) throws IOException{
 		System.out.println("dsklfldfkgfghmlk");
-		QueryResult result = sunBurstReportService.getSunBurstDataService(data ,jsonFilePath);
+		Resource resource = resourceLoader.getResource("TestjsonSmallData.json");
+		File file = resource.getFile();
+		QueryResult result = sunBurstReportService.getSunBurstDataService(data ,jsonFilePath,file);
 		return ResponseEntity.ok(result);
 		
 	}

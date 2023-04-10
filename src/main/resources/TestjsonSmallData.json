@@ -1,0 +1,37 @@
+{
+  "records":[
+  {
+    "parent": "",
+    "name": "All",
+    "column_name": "",
+    "id": "All",
+  },
+  {
+    "parent": "All",
+    "name": "Primary",
+    "column_name": "",
+    "id": "1001",
+  }, 
+  {
+    "parent": "1001",
+    "name": "Govt",
+    "column_name": "",
+    "id": "101",
+  },
+   
+  {
+    "parent": "101",
+    "name": "Boys",
+    "column_name": "primary_boys_govt",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "101",
+    "name": "Girls",
+    "column_name": "primary_girls_govt",
+    "id": "Girls",
+    "value": "0"
+  }
+  ]
+}
