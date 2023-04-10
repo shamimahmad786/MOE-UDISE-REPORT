@@ -95,7 +95,7 @@ public class EnrollmentQuery {
 	public QueryBuilderDependency getDynamicQueryPojo(QueryBuilderDependency qbuildObj, Map<String, Object> dependency, Map<String, String> dependentValue) {
 		
 		String reportFor=String.valueOf(dependency.get("reportFor"));
-		String categoryType=String.valueOf(dependency.get("cateoryType"));
+		String socialCategoryType=String.valueOf(dependency.get("SocialCategoryType"));
 		String managementType=String.valueOf(dependency.get("managementType"));
 		
 		if(reportFor.equalsIgnoreCase("0")) {
@@ -129,7 +129,7 @@ public class EnrollmentQuery {
 		}
 		
 		
-		if(categoryType.equalsIgnoreCase("0")) {
+		if(socialCategoryType.equalsIgnoreCase("0")) {
 			qbuildObj.setFieldSet( " social_category_name ," + qbuildObj.getFieldSet());
 			qbuildObj.setIsGroup("Y");
 			
@@ -142,7 +142,7 @@ public class EnrollmentQuery {
 			}
 			qbuildObj.setIsOrderBy("Y");
 			qbuildObj.setOrderBy("social_category_name");
-		}else if(categoryType.equalsIgnoreCase("9")) {
+		}else if(socialCategoryType.equalsIgnoreCase("9")) {
 			if(qbuildObj.getIsGroup()==null || qbuildObj.getIsGroup().isEmpty()) {
 			qbuildObj.setIsGroup("N");
 			}
@@ -150,7 +150,7 @@ public class EnrollmentQuery {
 			qbuildObj.setIsOrderBy("N");
 			}
 //			qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependentValue.get("cateoryType"));
-		}else if(categoryType.equalsIgnoreCase("1") || categoryType.equalsIgnoreCase("2") || categoryType.equalsIgnoreCase("3") || categoryType.equalsIgnoreCase("4") ) {
+		}else if(socialCategoryType.equalsIgnoreCase("1") || socialCategoryType.equalsIgnoreCase("2") || socialCategoryType.equalsIgnoreCase("3") || socialCategoryType.equalsIgnoreCase("4") ) {
 			qbuildObj.setIsCondition("Y");
 			qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependency.get("cateoryType"));
 			qbuildObj.setFieldSet(" social_category_name ," +qbuildObj.getFieldSet());

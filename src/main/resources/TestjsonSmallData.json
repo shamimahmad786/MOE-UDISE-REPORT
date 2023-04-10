@@ -5,18 +5,147 @@
     "name": "All",
     "column_name": "",
     "id": "All",
+
   },
   {
     "parent": "All",
     "name": "Primary",
     "column_name": "",
     "id": "1001",
+    "color":"#09579F"
   }, 
   {
     "parent": "1001",
     "name": "Govt",
     "column_name": "",
     "id": "101",
+  },
+  {
+    "parent": "1001",
+    "name": "Govt Aided",
+    "column_name": "",
+    "id": "102",
+    "value": "0"
+  },
+  {
+    "parent": "1001",
+    "name": "Private",
+    "column_name": "",
+    "id": "103",
+    "value": "0"
+  },
+  {
+    "parent": "1001",
+    "name": "Other",
+    "column_name": "",
+    "id": "104",
+    "value": "0"
+  },
+  {
+    "parent": "All",
+    "name": "Upper Primary",
+    "column_name": "",
+    "id": "1002",
+    "value": "0",
+    "color":"#1C9EB4"
+  },
+  {
+    "parent": "1002",
+    "name": "Govt",
+    "column_name": "",
+    "id": "201",
+    "value": "0"
+  },
+  {
+    "parent": "1002",
+    "name": "Govt Aided",
+    "column_name": "",
+    "id": "202",
+    "value": "0"
+  },
+  {
+    "parent": "1002",
+    "name": "Private",
+    "column_name": "",
+    "id": "203",
+    "value": "0"
+  },
+  {
+    "parent": "1002",
+    "name": "Other",
+    "column_name": "",
+    "id": "204",
+    "value": "0"
+  },
+  {
+    "parent": "All",
+    "name": "Secondary",
+    "column_name": "",
+    "id": "1003",
+    "value": "0"
+  },
+  {
+    "parent": "1003",
+    "name": "Govt",
+    "column_name": "",
+    "id": "301",
+    "value": "0"
+  },
+  {
+    "parent": "1003",
+    "name": "Govt Aided",
+    "column_name": "",
+    "id": "302",
+    "value": "0"
+  },
+  {
+    "parent": "1003",
+    "name": "Private",
+    "column_name": "",
+    "id": "303",
+    "value": "0"
+  },
+  {
+    "parent": "1003",
+    "name": "Other",
+    "column_name": "",
+    "id": "304",
+    "value": "0"
+  },
+  {
+    "parent": "All",
+    "name": "Higher",
+    "column_name": "",
+    "id": "1004",
+    "value": "0"
+  },
+  {
+    "parent": "1004",
+    "name": "Govt",
+    "column_name": "",
+    "id": "401",
+    "value": "0"
+  },
+  {
+    "parent": "1004",
+    "name": "Govt Aided",
+    "column_name": "",
+    "id": "402",
+    "value": "0"
+  },
+  {
+    "parent": "1004",
+    "name": "Private",
+    "column_name": "",
+    "id": "403",
+    "value": "0"
+  },
+  {
+    "parent": "1004",
+    "name": "Other",
+    "column_name": "",
+    "id": "404",
+    "value": "0"
   },
    
   {
@@ -31,6 +160,209 @@
     "name": "Girls",
     "column_name": "primary_girls_govt",
     "id": "Girls",
+    "value": "0"
+  },
+ {
+    "parent": "102",
+    "name": "Girls",
+    "column_name": "primary_girls_govt_aided",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "102",
+    "name": "Boys",
+    "column_name": "primary_boys_govt_aided",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "103",
+    "name": "Boys",
+    "column_name": "primary_boys_private",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "103",
+    "name": "Girls",
+    "column_name": "primary_girls_private",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "104",
+    "name": "Boys",
+    "column_name": "primary_boys_other",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "104",
+    "name": "Girls",
+    "column_name": "primary_girls_other",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "201",
+    "name": "Girls",
+    "column_name": "upper_primary_girls_govt",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "202",
+    "name": "Girls",
+    "column_name": "upper_primary_girls_govt_aided",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "202",
+    "name": "Boys",
+    "column_name": "upper_primary_boys_govt_aided",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "203",
+    "name": "Girls",
+    "column_name": "upper_primary_girls_govt_private",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "203",
+    "name": "Boys",
+    "column_name": "upper_primary_boys_private",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "204",
+    "name": "Girls",
+    "column_name": "upper_primary_girls_other",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "204",
+    "name": "Boys",
+    "column_name": "upper_primary_boys_other",
+    "id": "Boys",
+    "value": "0"
+  },
+{
+    "parent": "301",
+    "name": "Boys",
+    "column_name": "secondary_boys_govt",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "301",
+    "name": "Girls",
+    "column_name": "secondary_girls_govt",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "302",
+    "name": "Girls",
+    "column_name": "secondary_girls_govt_aided",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "302",
+    "name": "Boys",
+    "column_name": "secondary_boys_govt_aided",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "303",
+    "name": "Boys",
+    "column_name": "secondary_boys_private",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "303",
+    "name": "Girls",
+    "column_name": "secondary_girls_private",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "304",
+    "name": "Boys",
+    "column_name": "secondary_boys_other",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "304",
+    "name": "Girls",
+    "column_name": "secondary_girls_other",
+    "id": "Girls",
+    "value": "0"
+  },
+ {
+    "parent": "401",
+    "name": "Girls",
+    "column_name": "higher_secondary_girls_govt",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "401",
+    "name": "Boys",
+    "column_name": "higher_secondary_boys_govt",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "402",
+    "name": "Girls",
+    "column_name": "higher_secondary_girls_govt_aided",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "402",
+    "name": "Boys",
+    "column_name": "higher_secondary_boys_govt_aided",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "403",
+    "name": "Girls",
+    "column_name": "higher_secondary_girls_private",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "403",
+    "name": "Boys",
+    "column_name": "higher_secondary_boys_private",
+    "id": "Boys",
+    "value": "0"
+  },
+  {
+    "parent": "404",
+    "name": "Girls",
+    "column_name": "higher_secondary_boys_other",
+    "id": "Girls",
+    "value": "0"
+  },
+  {
+    "parent": "404",
+    "name": "Boys",
+    "column_name": "higher_secondary_boys_other",
+    "id": "Boys",
     "value": "0"
   }
   ]

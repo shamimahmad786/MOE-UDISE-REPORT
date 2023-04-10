@@ -54,7 +54,29 @@ public class TabularReportService {
 		if(query !=null) {
 			result=nativeRepository.executeQueries(query);
 			//result.setDisplaySet(CollumnMapping.getColumnDescription(result.getColumnName()));
-			result.setTableHader(CollumnMapping.getColumn(columnDefinationRepository,Integer.valueOf(dependentObj.get("mapId").toString())));
+			List<Map<String,Object>> ltOfHeader=	CollumnMapping.getColumn(columnDefinationRepository,Integer.valueOf(dependentObj.get("mapId").toString()));
+			
+			System.out.println("Report for--->"+dependValue.get("reportFor"));
+			System.out.println("dependValue--->"+dependentObj);
+			if(dependentObj.get("SocialCategoryType") !=null && String.valueOf(dependentObj.get("SocialCategoryType")).equalsIgnoreCase("0")) {
+				
+				Map<String, Object> cMap2 = new HashMap<String, Object>();
+				cMap2.put("field", "social_category_name");
+				cMap2.put("headerName", "Soc. Category");
+				cMap2.put("width", 180);
+				ltOfHeader.add(0, cMap2);
+			}
+		   if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("1")) {
+				
+				Map<String, Object> cMap2 = new HashMap<String, Object>();
+				cMap2.put("field", "state_name");
+				cMap2.put("headerName", "State Name");
+				cMap2.put("width", 250);
+				ltOfHeader.add(0, cMap2);
+			}
+			
+			System.out.println("header-->"+ltOfHeader);
+			result.setTableHader(ltOfHeader);
 			result.setTemplateType(1);
 			List<HashMap<String,String>> lt=new ArrayList<HashMap<String,String>>();
 			HashMap<String,String> hs=new HashMap<String,String>();

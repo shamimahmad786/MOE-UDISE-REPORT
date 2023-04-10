@@ -30,7 +30,7 @@ public class NativeRepository {
 	        List<Object> columnDataType=new ArrayList<Object>();
 	      //  String sql = "select * from pgi_ms_reportname";
 	        List<Map<String, Object>> rows = jdbcTemplate.queryForList(queryData);
-//	        // System.out.println("rows values--->"+rows);
+	         System.out.println("rows values--->"+rows);
 	        SqlRowSet rs = jdbcTemplate.queryForRowSet(queryData);
 	        SqlRowSetMetaData rsmd = rs.getMetaData();
 	        int columnNo = rsmd.getColumnCount();

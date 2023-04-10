@@ -27,6 +27,8 @@ public class ColumnDefination {
 	private String  headerLevel2;
 	@Column(name="header_level3")
 	private String  headerLevel3;
+	@Column(name="display_width")
+	private Integer displayWidth;
 	
 	
 	
@@ -94,6 +96,12 @@ public class ColumnDefination {
 	}
 	public void setHeaderLevel3(String headerLevel3) {
 		this.headerLevel3 = headerLevel3;
+	}
+	public Integer getDisplayWidth() {
+		return displayWidth;
+	}
+	public void setDisplayWidth(Integer displayWidth) {
+		this.displayWidth = displayWidth;
 	}
 	
 	

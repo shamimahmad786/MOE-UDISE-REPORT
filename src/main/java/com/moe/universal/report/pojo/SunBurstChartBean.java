@@ -8,7 +8,8 @@ public class SunBurstChartBean {
 	private String name;
 	private String parent;
 	private String column_name;
-	private String value="0";
+	private Integer value;
+	private String color;
 	
 	
 	
@@ -19,7 +20,7 @@ public class SunBurstChartBean {
 
 
 	
-	public SunBurstChartBean(String id, String name, String parent, String column_name, String value) {
+	public SunBurstChartBean(String id, String name, String parent, String column_name, Integer value) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,6 +29,18 @@ public class SunBurstChartBean {
 		this.value = value;
 	}
 	
+
+
+	public String getColor() {
+		return color;
+	}
+
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 
 
 	public String getId() {
@@ -54,10 +67,10 @@ public class SunBurstChartBean {
 	public void setColumn_name(String column_name) {
 		this.column_name = column_name;
 	}
-	public String getValue() {
+	public Integer getValue() {
 		return value;
 	}
-	public void setValue(String value) {
+	public void setValue(Integer value) {
 		this.value = value;
 	}
 
