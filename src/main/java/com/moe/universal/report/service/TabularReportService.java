@@ -1,6 +1,7 @@
 package com.moe.universal.report.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class TabularReportService {
 	
 	@Autowired
 	ColumnDefinationRepository columnDefinationRepository;
+	List<String> socList = Arrays.asList("0", "1", "2", "3", "5");
 	
 	public QueryResult getTabularJson(String dependency) {
 		String query=null;
@@ -58,11 +60,25 @@ public class TabularReportService {
 			
 			System.out.println("Report for--->"+dependValue.get("reportFor"));
 			System.out.println("dependValue--->"+dependentObj);
-			if(dependentObj.get("SocialCategoryType") !=null && String.valueOf(dependentObj.get("SocialCategoryType")).equalsIgnoreCase("0")) {
+			if(dependentObj.get("SocialCategoryType") !=null && socList.contains(String.valueOf(dependentObj.get("SocialCategoryType")))) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
 				cMap2.put("field", "social_category_name");
 				cMap2.put("headerName", "Soc. Category");
+				cMap2.put("width", 180);
+				ltOfHeader.add(0, cMap2);
+			}
+			if(dependentObj.get("managementType") !=null && String.valueOf(dependentObj.get("managementType")).equalsIgnoreCase("1")) {
+				
+				Map<String, Object> cMap2 = new HashMap<String, Object>();
+				cMap2.put("field", "broad_management_name");
+				cMap2.put("headerName", "Management");
+				cMap2.put("width", 180);
+				ltOfHeader.add(0, cMap2);
+			}else if(dependentObj.get("managementType") !=null && String.valueOf(dependentObj.get("managementType")).equalsIgnoreCase("2")) {
+				Map<String, Object> cMap2 = new HashMap<String, Object>();
+				cMap2.put("field", "sch_mgmt_center_name");
+				cMap2.put("headerName", "Management");
 				cMap2.put("width", 180);
 				ltOfHeader.add(0, cMap2);
 			}
@@ -73,6 +89,20 @@ public class TabularReportService {
 				cMap2.put("headerName", "State Name");
 				cMap2.put("width", 250);
 				ltOfHeader.add(0, cMap2);
+			}
+		   if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("2")) {
+				
+				Map<String, Object> cMap2 = new HashMap<String, Object>();
+				cMap2.put("field", "state_name");
+				cMap2.put("headerName", "State Name");
+				cMap2.put("width", 250);
+				ltOfHeader.add(0, cMap2);
+				
+				Map<String, Object> cMap3 = new HashMap<String, Object>();
+				cMap3.put("field", "district_name");
+				cMap3.put("headerName", "District Name");
+				cMap3.put("width", 250);
+				ltOfHeader.add(1, cMap3);
 			}
 			
 			System.out.println("header-->"+ltOfHeader);

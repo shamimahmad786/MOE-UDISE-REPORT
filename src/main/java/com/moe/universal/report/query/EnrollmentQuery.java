@@ -39,8 +39,13 @@ public class EnrollmentQuery {
 			
 			
 			getDynamicQueryPojo(qbuildObj,dependency,dependentValue);
-			qbuildObj.setGroupSet(" grouping sets ( ("+qbuildObj.getGroupSet()+"), () ) ");
-			 query=qbObj.gereratQuery(qbuildObj);
+//			qbuildObj.setGroupSet(" grouping sets ( ("+qbuildObj.getGroupSet()+"), () ) ");
+			
+			qbuildObj.setGroupSet(" grouping sets ( "+groupArrangement(qbuildObj.getGroupSet())+", () ) ");
+			
+			query=qbObj.gereratQuery(qbuildObj);
+			
+			System.out.println(" Query ================" + query);
 			 
 //			 if(query !=null) {
 //				 nativeRepository.executeQueries(query);
@@ -103,7 +108,7 @@ public class EnrollmentQuery {
 			qbuildObj.setCondition("");
 		}else if(reportFor.equalsIgnoreCase("1")) {
 			
-			System.out.println("in 1--->"+dependentValue.get("stateId"));
+			//System.out.println("in 1--->"+dependentValue.get("stateId"));
 			qbuildObj.setIsCondition("Y");
 			if(!dependentValue.get("stateId").equalsIgnoreCase("0")) {
 			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" ");
@@ -115,14 +120,24 @@ public class EnrollmentQuery {
 			qbuildObj.setOrderBy(" state_name ");
 		}else if(reportFor.equalsIgnoreCase("2")) {
 			qbuildObj.setIsCondition("Y");
-			if(dependentValue.get("districtId").equalsIgnoreCase("0")) {
-				qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" ");	
+			if(dependentValue.get("districtId").equalsIgnoreCase("0")) { // If No District is selected
+				if(dependentValue.get("stateId").equalsIgnoreCase("0")) {  // If NO state is selected ie All District of All India
+					
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name ");
+					//qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", district_name ");
+					qbuildObj.setIsGroup("Y");
+					qbuildObj.setGroupSet(" state_name , district_name ");
+					qbuildObj.setIsOrderBy("Y");
+					qbuildObj.setOrderBy(" state_name , district_name");
+				}else {
+					qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" ");	
+				}
 			}else {
 			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" ");
 			}
 		}else if(reportFor.equalsIgnoreCase("3")) {
 			qbuildObj.setIsCondition("Y");
-			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("block_id")+" ");
+			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("blockId")+" ");
 		}else if(reportFor.equalsIgnoreCase("4")) {
 			qbuildObj.setIsCondition("Y");
 			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("block_id")+" and parliament_id="+dependentValue.get("parliamentId")+" ");
@@ -141,7 +156,11 @@ public class EnrollmentQuery {
 				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+",social_category_name");
 			}
 			qbuildObj.setIsOrderBy("Y");
-			qbuildObj.setOrderBy("social_category_name");
+			if(qbuildObj.getOrderBy() !=null) {
+			qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,social_category_name");
+			}else {
+				qbuildObj.setOrderBy("social_category_name");
+			}
 		}else if(socialCategoryType.equalsIgnoreCase("9")) {
 			if(qbuildObj.getIsGroup()==null || qbuildObj.getIsGroup().isEmpty()) {
 			qbuildObj.setIsGroup("N");
@@ -152,9 +171,16 @@ public class EnrollmentQuery {
 //			qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependentValue.get("cateoryType"));
 		}else if(socialCategoryType.equalsIgnoreCase("1") || socialCategoryType.equalsIgnoreCase("2") || socialCategoryType.equalsIgnoreCase("3") || socialCategoryType.equalsIgnoreCase("4") ) {
 			qbuildObj.setIsCondition("Y");
-			qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependency.get("cateoryType"));
-			qbuildObj.setFieldSet(" social_category_name ," +qbuildObj.getFieldSet());
-			qbuildObj.setIsGroup("Y");
+			if(qbuildObj.getCondition() == "") {
+				qbuildObj.setCondition(" social_category_id="+dependency.get("SocialCategoryType"));
+				qbuildObj.setFieldSet(" social_category_name ," +qbuildObj.getFieldSet());
+				qbuildObj.setIsGroup("Y");
+			}else {
+				qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependency.get("SocialCategoryType"));
+				qbuildObj.setFieldSet(" social_category_name ," +qbuildObj.getFieldSet());
+				qbuildObj.setIsGroup("Y");
+			}
+		
 			if(qbuildObj.getGroupSet()==null || qbuildObj.getGroupSet().isEmpty()) {
 				qbuildObj.setGroupSet("social_category_name");
 				}else {
@@ -179,12 +205,22 @@ public class EnrollmentQuery {
 			
 			if(!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 				qbuildObj.setIsCondition("Y");
-				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
-				qbuildObj.setFieldSet(" broad_management_name , " +qbuildObj.getFieldSet());
-				qbuildObj.setIsGroup("Y");
-				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
-				qbuildObj.setIsOrderBy("Y");
-				qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+				if(qbuildObj.getCondition()=="") {
+					qbuildObj.setCondition(" sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
+					qbuildObj.setFieldSet(" broad_management_name , " +qbuildObj.getFieldSet());
+					qbuildObj.setIsGroup("Y");
+					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
+					qbuildObj.setIsOrderBy("Y");
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+				}else {
+					qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
+					qbuildObj.setFieldSet(" broad_management_name , " +qbuildObj.getFieldSet());
+					qbuildObj.setIsGroup("Y");
+					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
+					qbuildObj.setIsOrderBy("Y");
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+				}
+				
 			}else if(String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 //				qbuildObj.setIsCondition("Y");
 //				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
@@ -206,12 +242,22 @@ public class EnrollmentQuery {
 		}else if(managementType.equalsIgnoreCase("2")) {
 			if(!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 				qbuildObj.setIsCondition("Y");
-				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_mgmt_center_id in ("+dependency.get("managementValue")+")");	
-				qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", sch_mgmt_center_name ");
-				qbuildObj.setIsGroup("Y");
-//				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
-				qbuildObj.setIsOrderBy("Y");
-//				qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+				if(qbuildObj.getCondition() == "") {
+					qbuildObj.setCondition(" sch_mgmt_center_id in ("+dependency.get("managementValue")+")");	
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", sch_mgmt_center_name ");
+					qbuildObj.setIsGroup("Y");
+//					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
+					qbuildObj.setIsOrderBy("Y");
+//					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+				}else {
+					qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_mgmt_center_id in ("+dependency.get("managementValue")+")");	
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", sch_mgmt_center_name ");
+					qbuildObj.setIsGroup("Y");
+//					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
+					qbuildObj.setIsOrderBy("Y");
+//					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+				}
+	
 				
 				if(qbuildObj.getGroupSet() !=null) {
 					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
@@ -244,6 +290,28 @@ public class EnrollmentQuery {
 		
 		
 		return qbuildObj;
+		
+	}
+	
+	public String groupArrangement(String data){
+		String finalGroup="";
+		if(data != null) {
+			for(int i=0;i<data.split(",").length;i++) {
+				if(data.split(",")[i].trim().equalsIgnoreCase("state_name")) {
+				finalGroup +="(state_name)";
+				}
+			}
+			
+			if(finalGroup !="") {
+			finalGroup ="("+data+"),"+finalGroup;
+			}else {
+				finalGroup ="("+data+")";	
+			}
+		}
+	
+		
+		
+		return finalGroup;
 		
 	}
 	

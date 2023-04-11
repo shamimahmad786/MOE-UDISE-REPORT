@@ -23,7 +23,7 @@ public class CollumnMapping {
 	public static List<Map<String, Object>> getColumn(ColumnDefinationRepository columnDefinationRepository,
 			Integer tableId) {
 
-		System.out.println("TableId--->" + tableId);
+//		System.out.println("TableId--->" + tableId);
 
 		List<ColumnDefination> coldefObj = columnDefinationRepository.findAllByTableId(tableId);
 
@@ -143,7 +143,7 @@ public class CollumnMapping {
 						lt.add((HashMap<String, Object>) cMap);
 						hs.put("children", lt);
 
-						System.out.println("hs---->" + hs);
+//						System.out.println("hs---->" + hs);
 
 						finalList.add(hs);
 					}
