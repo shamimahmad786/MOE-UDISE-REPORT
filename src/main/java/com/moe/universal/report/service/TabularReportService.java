@@ -104,6 +104,26 @@ public class TabularReportService {
 				cMap3.put("width", 250);
 				ltOfHeader.add(1, cMap3);
 			}
+		   if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("3")) {
+				
+				Map<String, Object> cMap2 = new HashMap<String, Object>();
+				cMap2.put("field", "state_name");
+				cMap2.put("headerName", "State Name");
+				cMap2.put("width", 250);
+				ltOfHeader.add(0, cMap2);
+				
+				Map<String, Object> cMap3 = new HashMap<String, Object>();
+				cMap3.put("field", "district_name");
+				cMap3.put("headerName", "District Name");
+				cMap3.put("width", 250);
+				ltOfHeader.add(1, cMap3);
+				
+				Map<String, Object> cMap4 = new HashMap<String, Object>();
+				cMap4.put("field", "block_name");
+				cMap4.put("headerName", "Block Name");
+				cMap4.put("width", 250);
+				ltOfHeader.add(2, cMap4);
+			}
 			
 			System.out.println("header-->"+ltOfHeader);
 			result.setTableHader(ltOfHeader);

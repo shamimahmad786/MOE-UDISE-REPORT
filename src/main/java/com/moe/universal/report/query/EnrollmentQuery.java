@@ -130,14 +130,33 @@ public class EnrollmentQuery {
 					qbuildObj.setIsOrderBy("Y");
 					qbuildObj.setOrderBy(" state_name , district_name");
 				}else {
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name ");
+					//qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", district_name ");
+					qbuildObj.setIsGroup("Y");
+					qbuildObj.setGroupSet(" state_name , district_name ");
+					qbuildObj.setIsOrderBy("Y");
+					qbuildObj.setOrderBy(" state_name , district_name");
 					qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" ");	
 				}
 			}else {
+			qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name ");
+			qbuildObj.setGroupSet(" state_name , district_name ");
 			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" ");
 			}
 		}else if(reportFor.equalsIgnoreCase("3")) {
-			qbuildObj.setIsCondition("Y");
-			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("blockId")+" ");
+			if(dependentValue.get("districtId").equalsIgnoreCase("0")) {
+				qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name , block_name ");
+				qbuildObj.setIsCondition("Y");
+				qbuildObj.setIsGroup("Y");
+				qbuildObj.setGroupSet(" state_name, district_name , block_name ");
+				qbuildObj.setIsOrderBy("Y");
+				qbuildObj.setOrderBy(" state_name , district_name , block_name");
+				qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+ " ");
+			}else {
+				qbuildObj.setIsCondition("Y");
+				qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("blockId")+" ");
+			}
+			
 		}else if(reportFor.equalsIgnoreCase("4")) {
 			qbuildObj.setIsCondition("Y");
 			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("block_id")+" and parliament_id="+dependentValue.get("parliamentId")+" ");
