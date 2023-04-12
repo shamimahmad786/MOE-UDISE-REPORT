@@ -82,7 +82,7 @@ public class TabularReportService {
 				cMap2.put("width", 180);
 				ltOfHeader.add(0, cMap2);
 			}
-		   if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("1")) {
+			else if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("1")) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
 				cMap2.put("field", "state_name");
@@ -90,7 +90,7 @@ public class TabularReportService {
 				cMap2.put("width", 250);
 				ltOfHeader.add(0, cMap2);
 			}
-		   if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("2")) {
+			else if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("2")) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
 				cMap2.put("field", "state_name");
@@ -104,7 +104,7 @@ public class TabularReportService {
 				cMap3.put("width", 250);
 				ltOfHeader.add(1, cMap3);
 			}
-		   if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("3")) {
+			else if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("3")) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
 				cMap2.put("field", "state_name");
@@ -124,6 +124,7 @@ public class TabularReportService {
 				cMap4.put("width", 250);
 				ltOfHeader.add(2, cMap4);
 			}
+	
 			
 			System.out.println("header-->"+ltOfHeader);
 			result.setTableHader(ltOfHeader);

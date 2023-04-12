@@ -15,324 +15,332 @@ public class EnrollmentQuery {
 
 	@Autowired
 	NativeRepository nativeRepository;
-	
+
 	public String enrollmentQuery(Map<String, Object> dependency, Map<String, String> dependentValue) {
-	
-		QueryBuilder qbObj=new QueryBuilder();
-		QueryBuilderDependency qbuildObj=new QueryBuilderDependency();
+
+		QueryBuilder qbObj = new QueryBuilder();
+		QueryBuilderDependency qbuildObj = new QueryBuilderDependency();
 		String query = null;
-		
-		if(String.valueOf(dependency.get("mapId")).equalsIgnoreCase("1001")) {
+
+		if (String.valueOf(dependency.get("mapId")).equalsIgnoreCase("1001")) {
 //			if(String.valueOf(dependency.get("reportFor")).equalsIgnoreCase("N")) {
-				qbuildObj.setFieldSet("sum(cpp_b) as cpp_b, sum(cpp_g) as cpp_g, sum(c1_b) as c1_b, sum(c1_g) as c1_g, sum(c2_b) as c2_b, sum(c2_g) as c2_g, sum(c3_b) as c3_b, sum(c3_g) as c3_g, sum(c4_b) as c4_b, sum(c4_g) as c4_g, sum(c5_b) as c5_b, sum(c5_g) as c5_g, sum(c6_b) as c6_b, sum(c6_g) as c6_g, sum(c7_b) as c7_b, sum(c7_g) as c7_g, sum(c8_b) as c8_b, sum(c8_g) as c8_g, sum(c9_b) as c9_b, sum(c9_g) as c9_g, sum(c10_b) as c10_b, sum(c10_g) as c10_g, sum(c11_b) as c11_b, sum(c11_g) as c11_g, sum(c12_b) as c12_b, sum(c12_g) as c12_g");
+			qbuildObj.setFieldSet(
+					"sum(cpp_b) as cpp_b, sum(cpp_g) as cpp_g, sum(c1_b) as c1_b, sum(c1_g) as c1_g, sum(c2_b) as c2_b, sum(c2_g) as c2_g, sum(c3_b) as c3_b, sum(c3_g) as c3_g, sum(c4_b) as c4_b, sum(c4_g) as c4_g, sum(c5_b) as c5_b, sum(c5_g) as c5_g, sum(c6_b) as c6_b, sum(c6_g) as c6_g, sum(c7_b) as c7_b, sum(c7_g) as c7_g, sum(c8_b) as c8_b, sum(c8_g) as c8_g, sum(c9_b) as c9_b, sum(c9_g) as c9_g, sum(c10_b) as c10_b, sum(c10_g) as c10_g, sum(c11_b) as c11_b, sum(c11_g) as c11_g, sum(c12_b) as c12_b, sum(c12_g) as c12_g");
 //				qbuildObj.setDisplaySet(CollumnMapping.getColumnDescription());
-				qbuildObj.setTableName("udisereportnew.enrollment_social_categorywise esc");
-				qbuildObj.setIsCondition("Y");
+			qbuildObj.setTableName("udisereportnew.enrollment_social_categorywise esc");
+			qbuildObj.setIsCondition("Y");
 //				qbuildObj.setIsGroup("Y");
-				qbuildObj.setCondition(" 1=1 ");
-				
+			qbuildObj.setCondition(" 1=1 ");
+
 //				
 //				qbuildObj.setIsOrderBy("Y");
 //				qbuildObj.setOrderBy("social_category_id  ");
 //			}
-			
-			
-			
-			getDynamicQueryPojo(qbuildObj,dependency,dependentValue);
+
+			getDynamicQueryPojo(qbuildObj, dependency, dependentValue);
 //			qbuildObj.setGroupSet(" grouping sets ( ("+qbuildObj.getGroupSet()+"), () ) ");
-			
-			qbuildObj.setGroupSet(" grouping sets ( "+groupArrangement(qbuildObj.getGroupSet())+", () ) ");
-			
-			query=qbObj.gereratQuery(qbuildObj);
-			
+
+			qbuildObj.setGroupSet(" grouping sets ( " + groupArrangement(qbuildObj.getGroupSet()) + ", () ) ");
+
+			query = qbObj.gereratQuery(qbuildObj);
+
 			System.out.println(" Query ================" + query);
-			 
+
 //			 if(query !=null) {
 //				 nativeRepository.executeQueries(query);
 //			 }
-			 
-		}else if(String.valueOf(dependency.get("mapId")).equalsIgnoreCase("1002")) {
-			
-			qbuildObj.setFieldSet(" sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 1) as primary_boys_govt , \r\n"
-					+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 1) as upper_primary_boys_govt, \r\n"
-					+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 1) as secondary_boys_govt,\r\n"
-					+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 1) as higher_secondary_boys_govt,\r\n"
-					+ "sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 2) as primary_boys_govt_aided ,\r\n"
-					+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 2) as upper_primary_boys_govt_aided,\r\n"
-					+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 2) as secondary_boys_govt_aided,\r\n"
-					+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 2) as higher_secondary_boys_govt_aided,\r\n"
-					+ "sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 3) as primary_boys_private ,\r\n"
-					+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 3) as upper_primary_boys_private,\r\n"
-					+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 3) as secondary_boys_private, \r\n"
-					+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 3) as higher_secondary_boys_private, \r\n"
-					+ "sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 4) as primary_boys_other ,\r\n"
-					+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 4) as upper_primary_boys_other,\r\n"
-					+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 4) as secondary_boys_other, \r\n"
-					+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 4) as higher_secondary_boys_other,\r\n"
-					+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 1) as primary_girls_govt ,\r\n"
-					+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 1) as upper_primary_girls_govt,\r\n"
-					+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 1) as secondary_girls_govt, \r\n"
-					+ "sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 1) as higher_secondary_girls_govt, \r\n"
-					+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 2) as primary_girls_govt_aided ,\r\n"
-					+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 2) as upper_primary_girls_govt_aided,\r\n"
-					+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 2) as secondary_girls_govt_aided,\r\n"
-					+ "sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 2) as higher_secondary_girls_govt,\r\n"
-					+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 3) as primary_girls_private ,\r\n"
-					+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 3) as upper_primary_girls_govt_private,\r\n"
-					+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 3) as secondary_girls_private,\r\n"
-					+ "sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 3) as higher_secondary_girls_private, \r\n"
-					+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 4) as primary_girls_other ,\r\n"
-					+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 4) as upper_primary_girls_other, \r\n"
-					+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 4) as secondary_girls_other ");
+
+		} else if (String.valueOf(dependency.get("mapId")).equalsIgnoreCase("1002")) {
+
+			qbuildObj.setFieldSet(
+					" sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 1) as primary_boys_govt , \r\n"
+							+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 1) as upper_primary_boys_govt, \r\n"
+							+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 1) as secondary_boys_govt,\r\n"
+							+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 1) as higher_secondary_boys_govt,\r\n"
+							+ "sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 2) as primary_boys_govt_aided ,\r\n"
+							+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 2) as upper_primary_boys_govt_aided,\r\n"
+							+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 2) as secondary_boys_govt_aided,\r\n"
+							+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 2) as higher_secondary_boys_govt_aided,\r\n"
+							+ "sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 3) as primary_boys_private ,\r\n"
+							+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 3) as upper_primary_boys_private,\r\n"
+							+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 3) as secondary_boys_private, \r\n"
+							+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 3) as higher_secondary_boys_private, \r\n"
+							+ "sum(c1_b+c2_b+c3_b+c4_b+c5_b) filter(where sch_broad_mgt_id = 4) as primary_boys_other ,\r\n"
+							+ "sum(c6_b+c7_b+c8_b) filter(where sch_broad_mgt_id= 4) as upper_primary_boys_other,\r\n"
+							+ "sum(c9_b+c10_b) filter(where sch_broad_mgt_id= 4) as secondary_boys_other, \r\n"
+							+ "sum(c11_b+c12_b) filter(where sch_broad_mgt_id= 4) as higher_secondary_boys_other,\r\n"
+							+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 1) as primary_girls_govt ,\r\n"
+							+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 1) as upper_primary_girls_govt,\r\n"
+							+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 1) as secondary_girls_govt, \r\n"
+							+ "sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 1) as higher_secondary_girls_govt, \r\n"
+							+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 2) as primary_girls_govt_aided ,\r\n"
+							+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 2) as upper_primary_girls_govt_aided,\r\n"
+							+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 2) as secondary_girls_govt_aided,\r\n"
+							+ "sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 2) as higher_secondary_girls_govt,\r\n"
+							+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 3) as primary_girls_private ,\r\n"
+							+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 3) as upper_primary_girls_govt_private,\r\n"
+							+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 3) as secondary_girls_private,\r\n"
+							+ "sum(c11_g+c12_g) filter(where sch_broad_mgt_id= 3) as higher_secondary_girls_private, \r\n"
+							+ "sum(c1_g+c2_g+c3_g+c4_g+c5_g) filter(where sch_broad_mgt_id = 4) as primary_girls_other ,\r\n"
+							+ "sum(c6_g+c7_g+c8_g) filter(where sch_broad_mgt_id= 4) as upper_primary_girls_other, \r\n"
+							+ "sum(c9_g+c10_g) filter(where sch_broad_mgt_id= 4) as secondary_girls_other ");
 			qbuildObj.setTableName("udisereportnew.enrollment_social_categorywise esc");
 			qbuildObj.setIsCondition("Y");
 			qbuildObj.setCondition(" 1=1 ");
-			getDynamicQueryPojo(qbuildObj,dependency,dependentValue);
-			qbuildObj.setGroupSet(" grouping sets ( ("+qbuildObj.getGroupSet()+"), () ) ");
-		    query=qbObj.gereratQuery(qbuildObj);
+			getDynamicQueryPojo(qbuildObj, dependency, dependentValue);
+			qbuildObj.setGroupSet(" grouping sets ( (" + qbuildObj.getGroupSet() + "), () ) ");
+			query = qbObj.gereratQuery(qbuildObj);
 		}
-		
-		
+
 		return query;
-		
+
 	}
-	
-	public QueryBuilderDependency getDynamicQueryPojo(QueryBuilderDependency qbuildObj, Map<String, Object> dependency, Map<String, String> dependentValue) {
-		
-		String reportFor=String.valueOf(dependency.get("reportFor"));
-		String socialCategoryType=String.valueOf(dependency.get("SocialCategoryType"));
-		String managementType=String.valueOf(dependency.get("managementType"));
-		
-		if(reportFor.equalsIgnoreCase("0")) {
+
+	public QueryBuilderDependency getDynamicQueryPojo(QueryBuilderDependency qbuildObj, Map<String, Object> dependency,
+			Map<String, String> dependentValue) {
+
+		String reportFor = String.valueOf(dependency.get("reportFor"));
+		String socialCategoryType = String.valueOf(dependency.get("SocialCategoryType"));
+		String managementType = String.valueOf(dependency.get("managementType"));
+
+		if (reportFor.equalsIgnoreCase("0")) {
 			qbuildObj.setIsCondition("N");
 			qbuildObj.setCondition("");
-		}else if(reportFor.equalsIgnoreCase("1")) {
-			
-			//System.out.println("in 1--->"+dependentValue.get("stateId"));
+		} else if (reportFor.equalsIgnoreCase("1")) {
+
+			// System.out.println("in 1--->"+dependentValue.get("stateId"));
 			qbuildObj.setIsCondition("Y");
-			if(!dependentValue.get("stateId").equalsIgnoreCase("0")) {
-			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" ");
+			if (!dependentValue.get("stateId").equalsIgnoreCase("0")) {
+				qbuildObj.setCondition(" state_id=" + dependentValue.get("stateId") + " ");
 			}
-			qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name ");
+			qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name ");
 			qbuildObj.setIsGroup("Y");
 			qbuildObj.setGroupSet(" state_name ");
 			qbuildObj.setIsOrderBy("Y");
 			qbuildObj.setOrderBy(" state_name ");
-		}else if(reportFor.equalsIgnoreCase("2")) {
+		} else if (reportFor.equalsIgnoreCase("2")) {
 			qbuildObj.setIsCondition("Y");
-			if(dependentValue.get("districtId").equalsIgnoreCase("0")) { // If No District is selected
-				if(dependentValue.get("stateId").equalsIgnoreCase("0")) {  // If NO state is selected ie All District of All India
-					
-					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name ");
-					//qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", district_name ");
+			if (dependentValue.get("districtId").equalsIgnoreCase("0")) { // If No District is selected
+				if (dependentValue.get("stateId").equalsIgnoreCase("0")) { // If NO state is selected ie All District of
+																			// All India
+
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name , district_name ");
+					// qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", district_name ");
 					qbuildObj.setIsGroup("Y");
 					qbuildObj.setGroupSet(" state_name , district_name ");
 					qbuildObj.setIsOrderBy("Y");
 					qbuildObj.setOrderBy(" state_name , district_name");
-				}else {
-					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name ");
-					//qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", district_name ");
+				} else {
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name , district_name ");
+					// qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", district_name ");
 					qbuildObj.setIsGroup("Y");
 					qbuildObj.setGroupSet(" state_name , district_name ");
 					qbuildObj.setIsOrderBy("Y");
 					qbuildObj.setOrderBy(" state_name , district_name");
-					qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" ");	
+					qbuildObj.setCondition(" state_id=" + dependentValue.get("stateId") + " ");
 				}
-			}else {
-			qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name ");
-			qbuildObj.setGroupSet(" state_name , district_name ");
-			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" ");
+			} else {
+				qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name , district_name ");
+				qbuildObj.setIsGroup("Y");
+				qbuildObj.setGroupSet(" state_name , district_name ");
+				qbuildObj.setIsOrderBy("Y");
+				qbuildObj.setOrderBy(" state_name , district_name");
+				qbuildObj.setCondition(" state_id=" + dependentValue.get("stateId") + " and district_id="
+						+ dependentValue.get("districtId") + " ");
 			}
-		}else if(reportFor.equalsIgnoreCase("3")) {
-			if(dependentValue.get("districtId").equalsIgnoreCase("0")) {
-				qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", state_name , district_name , block_name ");
+		} else if (reportFor.equalsIgnoreCase("3")) {
+			if (dependentValue.get("districtId").equalsIgnoreCase("0")) {
+				qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name , district_name , block_name ");
 				qbuildObj.setIsCondition("Y");
 				qbuildObj.setIsGroup("Y");
 				qbuildObj.setGroupSet(" state_name, district_name , block_name ");
 				qbuildObj.setIsOrderBy("Y");
 				qbuildObj.setOrderBy(" state_name , district_name , block_name");
-				qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+ " ");
-			}else {
+				qbuildObj.setCondition(" state_id=" + dependentValue.get("stateId") + " ");
+			} else {
+				qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name , district_name , block_name ");
 				qbuildObj.setIsCondition("Y");
-				qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("blockId")+" ");
+				qbuildObj.setIsGroup("Y");
+				qbuildObj.setGroupSet(" state_name, district_name , block_name ");
+				qbuildObj.setIsOrderBy("Y");
+				qbuildObj.setOrderBy(" state_name , district_name , block_name");
+				qbuildObj.setCondition(" state_id=" + dependentValue.get("stateId") + " and district_id="
+						+ dependentValue.get("districtId") + " and block_id=" + dependentValue.get("blockId") + " ");
 			}
-			
-		}else if(reportFor.equalsIgnoreCase("4")) {
+
+		} else if (reportFor.equalsIgnoreCase("4")) {
 			qbuildObj.setIsCondition("Y");
-			qbuildObj.setCondition(" state_id="+dependentValue.get("stateId")+" and district_id="+dependentValue.get("districtId")+" and block_id="+dependentValue.get("block_id")+" and parliament_id="+dependentValue.get("parliamentId")+" ");
+			qbuildObj.setCondition(" state_id=" + dependentValue.get("stateId") + " and district_id="
+					+ dependentValue.get("districtId") + " and block_id=" + dependentValue.get("block_id")
+					+ " and parliament_id=" + dependentValue.get("parliamentId") + " ");
 		}
-		
-		
-		if(socialCategoryType.equalsIgnoreCase("0")) {
-			qbuildObj.setFieldSet( " social_category_name ," + qbuildObj.getFieldSet());
+
+		if (socialCategoryType.equalsIgnoreCase("0")) {
+			qbuildObj.setFieldSet(" social_category_name ," + qbuildObj.getFieldSet());
 			qbuildObj.setIsGroup("Y");
-			
-			System.out.println("Group set--->"+qbuildObj.getGroupSet());
-			
-			if(qbuildObj.getGroupSet()==null || qbuildObj.getGroupSet().isEmpty()) {
-			qbuildObj.setGroupSet("social_category_name");
-			}else {
-				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+",social_category_name");
+
+			System.out.println("Group set--->" + qbuildObj.getGroupSet());
+
+			if (qbuildObj.getGroupSet() == null || qbuildObj.getGroupSet().isEmpty()) {
+				qbuildObj.setGroupSet("social_category_name");
+			} else {
+				qbuildObj.setGroupSet(qbuildObj.getGroupSet() + ",social_category_name");
 			}
 			qbuildObj.setIsOrderBy("Y");
-			if(qbuildObj.getOrderBy() !=null) {
-			qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,social_category_name");
-			}else {
+			if (qbuildObj.getOrderBy() != null) {
+				qbuildObj.setOrderBy(qbuildObj.getOrderBy() + " ,social_category_name");
+			} else {
 				qbuildObj.setOrderBy("social_category_name");
 			}
-		}else if(socialCategoryType.equalsIgnoreCase("9")) {
-			if(qbuildObj.getIsGroup()==null || qbuildObj.getIsGroup().isEmpty()) {
-			qbuildObj.setIsGroup("N");
+		} else if (socialCategoryType.equalsIgnoreCase("9")) {
+			if (qbuildObj.getIsGroup() == null || qbuildObj.getIsGroup().isEmpty()) {
+				qbuildObj.setIsGroup("N");
 			}
-			if(qbuildObj.getIsOrderBy()==null ||  qbuildObj.getIsOrderBy().isEmpty()) {
-			qbuildObj.setIsOrderBy("N");
+			if (qbuildObj.getIsOrderBy() == null || qbuildObj.getIsOrderBy().isEmpty()) {
+				qbuildObj.setIsOrderBy("N");
 			}
 //			qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependentValue.get("cateoryType"));
-		}else if(socialCategoryType.equalsIgnoreCase("1") || socialCategoryType.equalsIgnoreCase("2") || socialCategoryType.equalsIgnoreCase("3") || socialCategoryType.equalsIgnoreCase("4") ) {
+		} else if (socialCategoryType.equalsIgnoreCase("1") || socialCategoryType.equalsIgnoreCase("2")
+				|| socialCategoryType.equalsIgnoreCase("3") || socialCategoryType.equalsIgnoreCase("4")) {
 			qbuildObj.setIsCondition("Y");
-			if(qbuildObj.getCondition() == "") {
-				qbuildObj.setCondition(" social_category_id="+dependency.get("SocialCategoryType"));
-				qbuildObj.setFieldSet(" social_category_name ," +qbuildObj.getFieldSet());
+			if (qbuildObj.getCondition() == "") {
+				qbuildObj.setCondition(" social_category_id=" + dependency.get("SocialCategoryType"));
+				qbuildObj.setFieldSet(" social_category_name ," + qbuildObj.getFieldSet());
 				qbuildObj.setIsGroup("Y");
-			}else {
-				qbuildObj.setCondition(qbuildObj.getCondition() + " and social_category_id="+dependency.get("SocialCategoryType"));
-				qbuildObj.setFieldSet(" social_category_name ," +qbuildObj.getFieldSet());
+			} else {
+				qbuildObj.setCondition(
+						qbuildObj.getCondition() + " and social_category_id=" + dependency.get("SocialCategoryType"));
+				qbuildObj.setFieldSet(" social_category_name ," + qbuildObj.getFieldSet());
 				qbuildObj.setIsGroup("Y");
 			}
-		
-			if(qbuildObj.getGroupSet()==null || qbuildObj.getGroupSet().isEmpty()) {
+
+			if (qbuildObj.getGroupSet() == null || qbuildObj.getGroupSet().isEmpty()) {
 				qbuildObj.setGroupSet("social_category_name");
-				}else {
-					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+",social_category_name");
-				}
+			} else {
+				qbuildObj.setGroupSet(qbuildObj.getGroupSet() + ",social_category_name");
+			}
 			qbuildObj.setIsOrderBy("Y");
 			qbuildObj.setOrderBy("social_category_name");
-			
+
 		}
-		
-		
-		if(managementType.equalsIgnoreCase("9")) {
-			if(qbuildObj.getIsGroup().isEmpty()) {
+
+		if (managementType.equalsIgnoreCase("9")) {
+			if (qbuildObj.getIsGroup().isEmpty()) {
 				qbuildObj.setIsGroup("N");
-				}
-				if(qbuildObj.getIsOrderBy().isEmpty()) {
+			}
+			if (qbuildObj.getIsOrderBy().isEmpty()) {
 				qbuildObj.setIsOrderBy("N");
-				}
-		}else if(managementType.equalsIgnoreCase("1")) {
-			
+			}
+		} else if (managementType.equalsIgnoreCase("1")) {
+
 //System.out.println("managementValue--->"+dependency.get("managementValue"));
-			
-			if(!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
+
+			if (!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 				qbuildObj.setIsCondition("Y");
-				if(qbuildObj.getCondition()=="") {
-					qbuildObj.setCondition(" sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
-					qbuildObj.setFieldSet(" broad_management_name , " +qbuildObj.getFieldSet());
+				if (qbuildObj.getCondition() == "") {
+					qbuildObj.setCondition(" sch_broad_mgt_id in (" + dependency.get("managementValue") + ")");
+					qbuildObj.setFieldSet(" broad_management_name , " + qbuildObj.getFieldSet());
 					qbuildObj.setIsGroup("Y");
-					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
+					qbuildObj.setGroupSet(qbuildObj.getGroupSet() + " ,broad_management_name ");
 					qbuildObj.setIsOrderBy("Y");
-					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
-				}else {
-					qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
-					qbuildObj.setFieldSet(" broad_management_name , " +qbuildObj.getFieldSet());
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy() + " ,broad_management_name ");
+				} else {
+					qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("
+							+ dependency.get("managementValue") + ")");
+					qbuildObj.setFieldSet(" broad_management_name , " + qbuildObj.getFieldSet());
 					qbuildObj.setIsGroup("Y");
-					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
+					qbuildObj.setGroupSet(qbuildObj.getGroupSet() + " ,broad_management_name ");
 					qbuildObj.setIsOrderBy("Y");
-					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy() + " ,broad_management_name ");
 				}
-				
-			}else if(String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
+
+			} else if (String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 //				qbuildObj.setIsCondition("Y");
 //				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_broad_mgt_id in ("+dependency.get("managementValue")+")");	
-				qbuildObj.setFieldSet( " broad_management_name ," +qbuildObj.getFieldSet());
+				qbuildObj.setFieldSet(" broad_management_name ," + qbuildObj.getFieldSet());
 				qbuildObj.setIsGroup("Y");
 //				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
 				qbuildObj.setIsOrderBy("Y");
 //				qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
-				
-				if(qbuildObj.getGroupSet() !=null) {
-					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,broad_management_name ");
-					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
-				}else {
+
+				if (qbuildObj.getGroupSet() != null) {
+					qbuildObj.setGroupSet(qbuildObj.getGroupSet() + " ,broad_management_name ");
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy() + " ,broad_management_name ");
+				} else {
 					qbuildObj.setGroupSet(" broad_management_name ");
 					qbuildObj.setOrderBy(" broad_management_name ");
 				}
-				
+
 			}
-		}else if(managementType.equalsIgnoreCase("2")) {
-			if(!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
+		} else if (managementType.equalsIgnoreCase("2")) {
+			if (!String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 				qbuildObj.setIsCondition("Y");
-				if(qbuildObj.getCondition() == "") {
-					qbuildObj.setCondition(" sch_mgmt_center_id in ("+dependency.get("managementValue")+")");	
-					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", sch_mgmt_center_name ");
+				if (qbuildObj.getCondition() == "") {
+					qbuildObj.setCondition(" sch_mgmt_center_id in (" + dependency.get("managementValue") + ")");
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", sch_mgmt_center_name ");
 					qbuildObj.setIsGroup("Y");
 //					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
 					qbuildObj.setIsOrderBy("Y");
 //					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
-				}else {
-					qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_mgmt_center_id in ("+dependency.get("managementValue")+")");	
-					qbuildObj.setFieldSet(qbuildObj.getFieldSet()+ ", sch_mgmt_center_name ");
+				} else {
+					qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_mgmt_center_id in ("
+							+ dependency.get("managementValue") + ")");
+					qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", sch_mgmt_center_name ");
 					qbuildObj.setIsGroup("Y");
 //					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
 					qbuildObj.setIsOrderBy("Y");
 //					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,broad_management_name ");
 				}
-	
-				
-				if(qbuildObj.getGroupSet() !=null) {
-					qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
-					qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,sch_mgmt_center_name ");
-				}else {
+
+				if (qbuildObj.getGroupSet() != null) {
+					qbuildObj.setGroupSet(qbuildObj.getGroupSet() + " ,sch_mgmt_center_name ");
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy() + " ,sch_mgmt_center_name ");
+				} else {
 					qbuildObj.setGroupSet("sch_mgmt_center_name ");
 					qbuildObj.setOrderBy(" sch_mgmt_center_name ");
 				}
-				
-				
-			}else if(String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
+
+			} else if (String.valueOf(dependency.get("managementValue")).equalsIgnoreCase("0")) {
 //				qbuildObj.setIsCondition("Y");
 //				qbuildObj.setCondition(qbuildObj.getCondition() + " and sch_mgmt_center_id in ("+dependency.get("managementValue")+")");	
-				qbuildObj.setFieldSet( " sch_mgmt_center_name ," +qbuildObj.getFieldSet());
+				qbuildObj.setFieldSet(" sch_mgmt_center_name ," + qbuildObj.getFieldSet());
 				qbuildObj.setIsGroup("Y");
-				
-				if(qbuildObj.getGroupSet() !=null) {
-				qbuildObj.setGroupSet(qbuildObj.getGroupSet()+ " ,sch_mgmt_center_name ");
-				qbuildObj.setOrderBy(qbuildObj.getOrderBy()+" ,sch_mgmt_center_name ");
-				}else {
-					qbuildObj.setGroupSet( " sch_mgmt_center_name ");
+
+				if (qbuildObj.getGroupSet() != null) {
+					qbuildObj.setGroupSet(qbuildObj.getGroupSet() + " ,sch_mgmt_center_name ");
+					qbuildObj.setOrderBy(qbuildObj.getOrderBy() + " ,sch_mgmt_center_name ");
+				} else {
+					qbuildObj.setGroupSet(" sch_mgmt_center_name ");
 					qbuildObj.setOrderBy(" sch_mgmt_center_name ");
 				}
 				qbuildObj.setIsOrderBy("Y");
-				
+
 			}
 		}
-		
-		
-		
-		
+
 		return qbuildObj;
-		
+
 	}
-	
-	public String groupArrangement(String data){
-		String finalGroup="";
-		if(data != null) {
-			for(int i=0;i<data.split(",").length;i++) {
-				if(data.split(",")[i].trim().equalsIgnoreCase("state_name")) {
-				finalGroup +="(state_name)";
+
+	public String groupArrangement(String data) {
+		String finalGroup = "";
+		if (data != null) {
+			if (data.length() != 1) {
+				for (int i = 0; i < data.split(",").length; i++) {
+					if (data.split(",")[i].trim().equalsIgnoreCase("state_name")) {
+						finalGroup += "(state_name)";
+					}
 				}
 			}
-			
-			if(finalGroup !="") {
-			finalGroup ="("+data+"),"+finalGroup;
-			}else {
-				finalGroup ="("+data+")";	
+			if (finalGroup != "") {
+				finalGroup = "(" + data + ")," + finalGroup;
+			} else {
+				finalGroup = "(" + data + ")";
 			}
 		}
-	
-		
-		
+
 		return finalGroup;
-		
+
 	}
-	
-	
+
 }
