@@ -105,6 +105,7 @@ public class EnrollmentQuery {
 
 		if (reportFor.equalsIgnoreCase("0")) {
 			qbuildObj.setIsCondition("N");
+			//qbuildObj.setCondition(" year_id=" + dependentValue.get("initYear") + " ");
 			qbuildObj.setCondition("");
 		} else if (reportFor.equalsIgnoreCase("1")) {
 
@@ -325,7 +326,7 @@ public class EnrollmentQuery {
 	public String groupArrangement(String data) {
 		String finalGroup = "";
 		if (data != null) {
-			if (data.length() != 1) {
+			if (data.split(",").length != 1) {
 				for (int i = 0; i < data.split(",").length; i++) {
 					if (data.split(",")[i].trim().equalsIgnoreCase("state_name")) {
 						finalGroup += "(state_name)";

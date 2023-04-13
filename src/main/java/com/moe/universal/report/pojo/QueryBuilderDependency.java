@@ -16,6 +16,15 @@ private String isGroup;
 private String isCondition;
 private String isOrderBy;
 private String orderBy;
+private Integer yearId;
+
+
+public Integer getYearId() {
+	return yearId;
+}
+public void setYearId(Integer yearId) {
+	this.yearId = yearId;
+}
 public String getFieldSet() {
 	return fieldSet;
 }

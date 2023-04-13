@@ -16,6 +16,7 @@ import com.moe.universal.report.pojo.SunBurstChartBean;
 public class QueryResult {
 	private List<Object> columnName;
 	private List<Map<String, Object>> rowValue;
+	private List<Map<String, Object>> yearList;
 	private List<Object> columnDataType;
 	private List<HashMap<String, Object>> displaySet;
 	private Integer templateType; 
@@ -27,6 +28,13 @@ public class QueryResult {
 	
 	
 	
+	
+	public List<Map<String, Object>> getYearList() {
+		return yearList;
+	}
+	public void setYearList(List<Map<String, Object>> yearList) {
+		this.yearList = yearList;
+	}
 	public Set<SunBurstChartBean> getData() {
 		return data;
 	}
