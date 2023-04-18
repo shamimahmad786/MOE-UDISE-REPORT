@@ -9,7 +9,7 @@ public class SunBurstChartBean {
 	private String parent;
 	private String column_name;
 	private Integer value;
-	private String color;
+	//private String color;
 	
 	
 	
@@ -29,17 +29,17 @@ public class SunBurstChartBean {
 		this.value = value;
 	}
 	
-
-
-	public String getColor() {
-		return color;
-	}
-
-
-
-	public void setColor(String color) {
-		this.color = color;
-	}
+//
+//
+//	public String getColor() {
+//		return color;
+//	}
+//
+//
+//
+//	public void setColor(String color) {
+//		this.color = color;
+//	}
 
 
 

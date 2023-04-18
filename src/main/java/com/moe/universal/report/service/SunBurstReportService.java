@@ -46,7 +46,7 @@ public class SunBurstReportService {
 	@Autowired
 	ColumnDefinationRepository columnDefinationRepository;
 	
-	public QueryResult getSunBurstDataService(String dependency,String jsonFilePath,File file) throws JsonMappingException, JsonProcessingException {
+	public QueryResult getSunBurstDataService(String mapId,String jsonFilePath,File file) throws JsonMappingException, JsonProcessingException {
 		
 		String query=null;
 		QueryResult result=new QueryResult();
@@ -55,19 +55,19 @@ public class SunBurstReportService {
 		Set<SunBurstChartBean> finaldata = new HashSet<>();
 		ObjectMapper mapper  = new ObjectMapper();
 		SunBurstChartBean obj = new SunBurstChartBean();
-		try {
-		dependentObj = mapperObj.readValue(dependency, new TypeReference<HashMap<String, Object>>() {
-		});
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		try {
-			dependValue=(Map<String,String>)dependentObj.get("dependency");
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		query=enrollmentGraphQuery.enrollmentGraphQuery(dependentObj,dependValue);
+//		try {
+//		dependentObj = mapperObj.readValue(dependency, new TypeReference<HashMap<String, Object>>() {
+//		});
+//		}catch(Exception ex) {
+//			ex.printStackTrace();
+//		}
+//		
+//		try {
+//			dependValue=(Map<String,String>)dependentObj.get("dependency");
+//		}catch(Exception ex) {
+//			ex.printStackTrace();
+//		}
+		query=enrollmentGraphQuery.enrollmentGraphQuery(mapId);
 		if(query !=null) {
 			result=nativeRepository.executeQueries(query);
 			//String filePath = "d:\\Testjson.json";

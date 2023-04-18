@@ -15,11 +15,11 @@ public class EnrollmentGraphQuery {
 	@Autowired
 	NativeRepository nativeRepository;
 	
-	public String enrollmentGraphQuery(Map<String, Object> dependency, Map<String, String> dependentValue) {
+	public String enrollmentGraphQuery(String mapId) {
 		QueryBuilder qbObj=new QueryBuilder();
 		QueryBuilderDependency qbuildObj=new QueryBuilderDependency();
 		String query = null;
-		String mapId = String.valueOf(dependency.get("mapId"));
+		//String mapId = String.valueOf(dependency.get("mapId"));
 	
 	
 		switch (mapId) {

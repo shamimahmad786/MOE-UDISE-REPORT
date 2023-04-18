@@ -42,14 +42,14 @@ public class DataRepresentController {
 		System.out.println("dsklfldfkgfghmlk");
 		Map<String, Object> dependentObj = null;
 		Resource resource = null;
-		try {
-			dependentObj = mapperObj.readValue(data, new TypeReference<HashMap<String, Object>>() {
-			});
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		String mapId = String.valueOf(dependentObj.get("mapId"));
-		switch (mapId) {
+//		try {
+//			dependentObj = mapperObj.readValue(data, new TypeReference<HashMap<String, Object>>() {
+//			});
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+//		String mapId = String.valueOf(dependentObj.get("mapId"));
+		switch (data) {
 		case "1001":
 			resource = resourceLoader.getResource("SocialCatWiseEnroll.json");
 			break;
