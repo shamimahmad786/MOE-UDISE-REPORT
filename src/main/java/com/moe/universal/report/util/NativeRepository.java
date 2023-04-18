@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.jdbc.support.rowset.SqlRowSetMetaData;
 import org.springframework.stereotype.Component;
@@ -25,7 +24,6 @@ public class NativeRepository {
 	  public QueryResult executeQueries(String queryData){      
 			QueryResult queryResult =new QueryResult();
 	     System.out.println("queryData--->"+queryData);
-		  MapSqlParameterSource parameters = new MapSqlParameterSource();
 	        List<Object> columnList=new ArrayList<Object>();
 	        List<Object> columnDataType=new ArrayList<Object>();
 	      //  String sql = "select * from pgi_ms_reportname";

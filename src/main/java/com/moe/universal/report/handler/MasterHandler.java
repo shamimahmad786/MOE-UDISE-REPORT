@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.moe.universal.report.modal.ReportList;
-import com.moe.universal.report.modal.ReportYearly;
 import com.moe.universal.report.repository.ReportListRepository;
 import com.moe.universal.report.repository.ReportYearlyRepository;
 

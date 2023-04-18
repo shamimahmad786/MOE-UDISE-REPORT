@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.moe.universal.report.pojo.InputDependency;
 import com.moe.universal.report.pojo.QueryBuilderDependency;
 import com.moe.universal.report.util.NativeRepository;
 import com.moe.universal.report.util.QueryBuilder;
@@ -40,7 +38,7 @@ public class EnrollmentQuery {
 			getDynamicQueryPojo(qbuildObj, dependency, dependentValue);
 //			qbuildObj.setGroupSet(" grouping sets ( ("+qbuildObj.getGroupSet()+"), () ) ");
 
-			qbuildObj.setGroupSet(" grouping sets ( " + groupArrangement(qbuildObj.getGroupSet()) + ", () ) ");
+			qbuildObj.setGroupSet(" grouping sets ( " + groupArrangement(qbuildObj.getGroupSet(),dependency) + ", () ) ");
 
 			query = qbObj.gereratQuery(qbuildObj);
 
@@ -323,10 +321,11 @@ public class EnrollmentQuery {
 
 	}
 
-	public String groupArrangement(String data) {
+	public String groupArrangement(String data,  Map<String, Object> dependency) {
 		String finalGroup = "";
+		String reportFor = String.valueOf(dependency.get("reportFor"));
 		if (data != null) {
-			if (data.split(",").length != 1) {
+			if (Integer.parseInt(reportFor) != 1) {
 				for (int i = 0; i < data.split(",").length; i++) {
 					if (data.split(",")[i].trim().equalsIgnoreCase("state_name")) {
 						finalGroup += "(state_name)";

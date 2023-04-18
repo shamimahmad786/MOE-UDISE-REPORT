@@ -1,18 +1,14 @@
 package com.moe.universal.report.util;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.moe.universal.report.modal.ColumnDefination;
 import com.moe.universal.report.pojo.NodeMapping;
 import com.moe.universal.report.repository.ColumnDefinationRepository;
-
-import lombok.Value;
 
 public class ColumnMappingForDataRepresent {
 	
@@ -21,7 +17,6 @@ public class ColumnMappingForDataRepresent {
 	
 	public  Map<NodeMapping,NodeMapping> getColumnMappingSunBurst(ColumnDefinationRepository columnDefinationRepository,Integer tableId) {
 		List<ColumnDefination> coldefObj = columnDefinationRepository.findAllByTableId(tableId);
-		List<Map<String,Object>> finalList=new ArrayList<Map<String,Object>>();
 		Map<NodeMapping,NodeMapping> mapList = new HashMap<>();
 		if(coldefObj.size()>0) {
 		

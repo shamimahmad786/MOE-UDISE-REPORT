@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moe.universal.report.pojo.InputDependency;
 import com.moe.universal.report.query.CollumnMapping;
 import com.moe.universal.report.query.EnrollmentQuery;
 import com.moe.universal.report.repository.ColumnDefinationRepository;
@@ -35,6 +34,7 @@ public class TabularReportService {
 	ColumnDefinationRepository columnDefinationRepository;
 	List<String> socList = Arrays.asList("0", "1", "2", "3", "5");
 	
+	@SuppressWarnings("unchecked")
 	public QueryResult getTabularJson(String dependency) {
 		String query=null;
 		QueryResult result=new QueryResult();
@@ -60,6 +60,9 @@ public class TabularReportService {
 			
 			System.out.println("Report for--->"+dependValue.get("reportFor"));
 			System.out.println("dependValue--->"+dependentObj);
+			if(String.valueOf(dependentObj.get("managementType")).equalsIgnoreCase("1")) {
+				System.out.println("Ali");
+			}
 			if(dependentObj.get("SocialCategoryType") !=null && socList.contains(String.valueOf(dependentObj.get("SocialCategoryType")))) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
@@ -82,7 +85,7 @@ public class TabularReportService {
 				cMap2.put("width", 180);
 				ltOfHeader.add(0, cMap2);
 			}
-			else if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("1")) {
+			 if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("1")) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
 				cMap2.put("field", "state_name");
@@ -90,7 +93,7 @@ public class TabularReportService {
 				cMap2.put("width", 250);
 				ltOfHeader.add(0, cMap2);
 			}
-			else if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("2")) {
+			 if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("2")) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
 				cMap2.put("field", "state_name");
@@ -104,7 +107,7 @@ public class TabularReportService {
 				cMap3.put("width", 250);
 				ltOfHeader.add(1, cMap3);
 			}
-			else if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("3")) {
+			 if(dependentObj.get("reportFor") !=null && String.valueOf(dependentObj.get("reportFor")).equalsIgnoreCase("3")) {
 				
 				Map<String, Object> cMap2 = new HashMap<String, Object>();
 				cMap2.put("field", "state_name");
