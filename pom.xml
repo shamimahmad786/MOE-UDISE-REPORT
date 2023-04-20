@@ -12,6 +12,7 @@
 	<artifactId>MOE-UDISE-REPORT</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MOE-UDISE-REPORT</name>
+	<packaging>jar</packaging>
 	<description>Udise Report</description>
 	<properties>
 		<java.version>17</java.version>

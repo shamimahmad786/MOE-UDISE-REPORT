@@ -9,6 +9,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Pre-Primary",
     "name": "Pre-Primary",
     "column_name": "",
     "id": "2000",
@@ -16,6 +17,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-1",
     "name": "Class-1",
     "column_name": "",
     "id": "2001",
@@ -23,6 +25,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-2",
     "name": "Class-2",
     "column_name": "",
     "id": "2002",
@@ -30,6 +33,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-3",
     "name": "Class-3",
     "column_name": "",
     "id": "2003",
@@ -37,6 +41,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-4",
     "name": "Class-4",
     "column_name": "",
     "id": "2004",
@@ -44,6 +49,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-5",
     "name": "Class-5",
     "column_name": "",
     "id": "2005",
@@ -51,6 +57,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-6",
     "name": "Class-6",
     "column_name": "",
     "id": "2006",
@@ -58,6 +65,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-7",
     "name": "Class-7",
     "column_name": "",
     "id": "2007",
@@ -65,6 +73,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-8",
     "name": "Class-8",
     "column_name": "",
     "id": "2008",
@@ -72,6 +81,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-9",
     "name": "Class-9",
     "column_name": "",
     "id": "2009",
@@ -79,6 +89,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-10",
     "name": "Class-10",
     "column_name": "",
     "id": "2010",
@@ -86,6 +97,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-11",
     "name": "Class-11",
     "column_name": "",
     "id": "2011",
@@ -93,6 +105,7 @@
   },
   {
     "parent": "All",
+    "displayname": "Class-12",
     "name": "Class-12",
     "column_name": "",
     "id": "2012",
@@ -100,6 +113,7 @@
   },
   {
     "parent": "2000",
+    "displayname": "Pre-Primary Boys",
     "name": "Boys",
     "column_name": "cpp_b",
     "id": "3000",
@@ -107,6 +121,7 @@
   },
   {
     "parent": "2000",
+    "displayname": "Pre-Primary Girls",
     "name": "Girls",
     "column_name": "cpp_g",
     "id": "4000",
@@ -114,6 +129,7 @@
   },
   {
     "parent": "2001",
+    "displayname": "Class-1 Boys",
     "name": "Boys",
     "column_name": "c1_b",
     "id": "3001",
@@ -121,6 +137,7 @@
   },
   {
     "parent": "2001",
+    "displayname": "Class-1 Girls",
     "name": "Girls",
     "column_name": "c1_g",
     "id": "4001",
@@ -128,6 +145,7 @@
   },
   {
     "parent": "2002",
+    "displayname": "Class-2 Boys",
     "name": "Boys",
     "column_name": "c2_b",
     "id": "3002",
@@ -135,6 +153,7 @@
   },
   {
     "parent": "2002",
+    "displayname": "Class-2 Girls",
     "name": "Girls",
     "column_name": "c2_g",
     "id": "4002",
@@ -142,6 +161,7 @@
   },
   {
     "parent": "2003",
+    "displayname": "Class-3 Boys",
     "name": "Boys",
     "column_name": "c3_b",
     "id": "3003",
@@ -149,6 +169,7 @@
   },
   {
     "parent": "2003",
+    "displayname": "Class-3 Girls",
     "name": "Girls",
     "column_name": "c3_g",
     "id": "4003",
@@ -156,6 +177,7 @@
   },
   {
     "parent": "2004",
+    "displayname": "Class-4 Boys",
     "name": "Boys",
     "column_name": "c4_b",
     "id": "3004",
@@ -163,6 +185,7 @@
   },
   {
     "parent": "2004",
+    "displayname": "Class-4 Girls",
     "name": "Girls",
     "column_name": "c4_g",
     "id": "4004",
@@ -170,6 +193,7 @@
   },
   {
     "parent": "2005",
+    "displayname": "Class-5 Boys",
     "name": "Boys",
     "column_name": "c5_b",
     "id": "3005",
@@ -177,6 +201,7 @@
   },
   {
     "parent": "2005",
+    "displayname": "Class-5 Girls",
     "name": "Girls",
     "column_name": "c5_g",
     "id": "4005",
@@ -184,6 +209,7 @@
   },
   {
     "parent": "2006",
+    "displayname": "Class-6 Boys",
     "name": "Boys",
     "column_name": "c6_b",
     "id": "3006",
@@ -191,6 +217,7 @@
   },
   {
     "parent": "2006",
+    "displayname": "Class-6 Girls",
     "name": "Girls",
     "column_name": "c6_g",
     "id": "4006",
@@ -198,6 +225,7 @@
   },
   {
     "parent": "2007",
+    "displayname": "Class-7 Boys",
     "name": "Boys",
     "column_name": "c7_b",
     "id": "3007",
@@ -205,6 +233,7 @@
   },
   {
     "parent": "2007",
+    "displayname": "Class-7 Girls",
     "name": "Girls",
     "column_name": "c7_g",
     "id": "4007",
@@ -212,6 +241,7 @@
   },
   {
     "parent": "2008",
+    "displayname": "Class-8 Boys",
     "name": "Boys",
     "column_name": "c8_b",
     "id": "3008",
@@ -219,6 +249,7 @@
   },
   {
     "parent": "2008",
+    "displayname": "Class-8 Girls",
     "name": "Girls",
     "column_name": "c8_g",
     "id": "4008",
@@ -226,6 +257,7 @@
   },
   {
     "parent": "2009",
+    "displayname": "Class-9 Boys",
     "name": "Boys",
     "column_name": "c9_b",
     "id": "3009",
@@ -233,6 +265,7 @@
   },
   {
     "parent": "2009",
+    "displayname": "Class-9 Girls",
     "name": "Girls",
     "column_name": "c9_g",
     "id": "4009",
@@ -240,6 +273,7 @@
   },
   {
     "parent": "2010",
+    "displayname": "Class-10 Boys",
     "name": "Boys",
     "column_name": "c10_b",
     "id": "3010",
@@ -247,6 +281,7 @@
   },
   {
     "parent": "2010",
+    "displayname": "Class-10 Girls",
     "name": "Girls",
     "column_name": "c10_g",
     "id": "4010",
@@ -254,6 +289,7 @@
   },
   {
     "parent": "2011",
+    "displayname": "Class-11 Boys",
     "name": "Boys",
     "column_name": "c11_b",
     "id": "3011",
@@ -261,6 +297,7 @@
   },
   {
     "parent": "2011",
+    "displayname": "Class-11 Girls",
     "name": "Girls",
     "column_name": "c11_g",
     "id": "4011",
@@ -268,6 +305,7 @@
   },
   {
     "parent": "2012",
+    "displayname": "Class-12 Boys",
     "name": "Boys",
     "column_name": "c12_b",
     "id": "3012",
@@ -275,6 +313,7 @@
   },
   {
     "parent": "2012",
+    "displayname": "Class-12 Girls",
     "name": "Girls",
     "column_name": "c12_g",
     "id": "4012",
