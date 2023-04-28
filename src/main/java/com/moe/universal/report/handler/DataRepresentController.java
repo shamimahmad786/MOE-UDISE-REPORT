@@ -42,18 +42,18 @@ public class DataRepresentController {
 		System.out.println("dsklfldfkgfghmlk");
 		Map<String, Object> dependentObj = null;
 		Resource resource = null;
-//		try {
-//			dependentObj = mapperObj.readValue(data, new TypeReference<HashMap<String, Object>>() {
-//			});
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		}
-//		String mapId = String.valueOf(dependentObj.get("mapId"));
-		switch (data) {
+		try {
+			dependentObj = mapperObj.readValue(data, new TypeReference<HashMap<String, Object>>() {
+			});
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		String reportId = String.valueOf(dependentObj.get("reportId"));
+		switch (reportId) {
 		case "1001":
 			resource = resourceLoader.getResource("SocialCatWiseEnroll.json");
 			break;
-		case "1002":
+		case "mapId":
 			resource = resourceLoader.getResource("TestjsonSmallData.json");
 			break;
 		default:
@@ -61,7 +61,7 @@ public class DataRepresentController {
 		}
 
 		File file = resource.getFile();
-		QueryResult result = sunBurstReportService.getSunBurstDataService(data, jsonFilePath, file);
+		QueryResult result = sunBurstReportService.getSunBurstDataService(reportId, jsonFilePath, file);
 		return ResponseEntity.ok(result);
 
 	}
