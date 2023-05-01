@@ -43,7 +43,8 @@ public class MasterService {
 				ex.printStackTrace();
 			}
 		try {
-			result=nativeRepository.executeQueries("select * from udisereportnew.master_state where year_id="+statemaster.get("yearId"));
+//			result=nativeRepository.executeQueries("select * from udisereportnew.master_state where year_id="+statemaster.get("yearId"));
+			result=nativeRepository.executeQueries("select * from udisereportnew.master_state where year_id="+2021);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -56,7 +57,8 @@ public QueryResult  getDistrictYearWise(@RequestBody String data) {
 	HashMap<String, Object> districtrequest =getRequestObject(data);
 	QueryResult result =new QueryResult();
 	try {
-		result=nativeRepository.executeQueries("select * from udisereportnew.master_district where year_id="+districtrequest.get("yearId") +" and state_id="+districtrequest.get("stateId"));
+//		result=nativeRepository.executeQueries("select * from udisereportnew.master_district where year_id="+districtrequest.get("yearId") +" and state_id="+districtrequest.get("stateId"));
+		result=nativeRepository.executeQueries("select * from udisereportnew.master_district where  state_id="+districtrequest.get("stateId"));
 	}catch(Exception ex) {
 		ex.printStackTrace();
 	}

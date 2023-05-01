@@ -21,6 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.moe.universal.report.pojo.RequestChartDataBean;
 import com.moe.universal.report.pojo.SunBurstChartBean;
 import com.moe.universal.report.query.CollumnMapping;
 import com.moe.universal.report.query.EnrollmentGraphQuery;
@@ -46,7 +47,7 @@ public class SunBurstReportService {
 	@Autowired
 	ColumnDefinationRepository columnDefinationRepository;
 	
-	public QueryResult getSunBurstDataService(String mapId,String jsonFilePath,File file) throws JsonMappingException, JsonProcessingException {
+	public QueryResult getSunBurstDataService(RequestChartDataBean reqBean,String jsonFilePath,File file) throws JsonMappingException, JsonProcessingException {
 		
 		String query=null;
 		QueryResult result=new QueryResult();
@@ -55,19 +56,8 @@ public class SunBurstReportService {
 		Set<SunBurstChartBean> finaldata = new HashSet<>();
 		ObjectMapper mapper  = new ObjectMapper();
 		SunBurstChartBean obj = new SunBurstChartBean();
-//		try {
-//		dependentObj = mapperObj.readValue(dependency, new TypeReference<HashMap<String, Object>>() {
-//		});
-//		}catch(Exception ex) {
-//			ex.printStackTrace();
-//		}
-//		
-//		try {
-//			dependValue=(Map<String,String>)dependentObj.get("dependency");
-//		}catch(Exception ex) {
-//			ex.printStackTrace();
-//		}
-		query=enrollmentGraphQuery.enrollmentGraphQuery(mapId);
+
+		query=enrollmentGraphQuery.enrollmentGraphQuery(reqBean);
 		if(query !=null) {
 			result=nativeRepository.executeQueries(query);
 			//String filePath = "d:\\Testjson.json";
