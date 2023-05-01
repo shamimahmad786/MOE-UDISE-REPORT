@@ -84,6 +84,21 @@ public class EnrollmentGraphQuery {
 			qbuildObj.setTableName("udisereportnew.enrollment_social_categorywise esc");
 			qbuildObj.setIsCondition("Y");
 			qbuildObj.setCondition(" 1=1 ");
+			switch (locationType) {
+			case 1:
+				qbuildObj.setCondition(" state_id=" + reqBean.getStateId() + " ");
+				break;
+            case 2:
+            	qbuildObj.setCondition(" state_id=" + reqBean.getStateId() + " and district_id="
+						+ reqBean.getDistrictId() + " ");
+				break;
+            case 3:
+            	qbuildObj.setCondition(" state_id =" + reqBean.getStateId() + " and district_id="
+						+ reqBean.getDistrictId() + " and block_id = " +reqBean.getBlockId() +" ");
+	            break;
+			default:
+				break;
+			}
 			qbuildObj.setGroupSet(" grouping sets ( ("+qbuildObj.getGroupSet()+"), () ) ");
 		    query=qbObj.gereratQuery(qbuildObj);
 		default:
