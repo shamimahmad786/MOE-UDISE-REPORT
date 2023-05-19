@@ -109,7 +109,8 @@ public class EnrollmentQuery {
 
 			// System.out.println("in 1--->"+dependentValue.get("stateId"));
 			qbuildObj.setIsCondition("Y");
-			if (!dependentValue.get("stateId").equalsIgnoreCase("0")) {
+			System.out.println("dependentValue.get(\"stateId\") " + String.valueOf(dependentValue.get("stateId")));
+			if (!String.valueOf(dependentValue.get("stateId")).equalsIgnoreCase("0")) {
 				qbuildObj.setCondition(" state_id=" + dependentValue.get("stateId") + " ");
 			}
 			qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name ");
@@ -119,8 +120,8 @@ public class EnrollmentQuery {
 			qbuildObj.setOrderBy(" state_name ");
 		} else if (reportFor.equalsIgnoreCase("2")) {
 			qbuildObj.setIsCondition("Y");
-			if (dependentValue.get("districtId").equalsIgnoreCase("0")) { // If No District is selected
-				if (dependentValue.get("stateId").equalsIgnoreCase("0")) { // If NO state is selected ie All District of
+			if (String.valueOf(dependentValue.get("districtId")).equalsIgnoreCase("0")) { // If No District is selected
+				if (String.valueOf(dependentValue.get("stateId")).equalsIgnoreCase("0")) { // If NO state is selected ie All District of
 																			// All India
 
 					qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name , district_name ");
@@ -148,7 +149,7 @@ public class EnrollmentQuery {
 						+ dependentValue.get("districtId") + " ");
 			}
 		} else if (reportFor.equalsIgnoreCase("3")) {
-			if (dependentValue.get("districtId").equalsIgnoreCase("0")) {
+			if (String.valueOf(dependentValue.get("districtId")).equalsIgnoreCase("0")) {
 				qbuildObj.setFieldSet(qbuildObj.getFieldSet() + ", state_name , district_name , block_name ");
 				qbuildObj.setIsCondition("Y");
 				qbuildObj.setIsGroup("Y");
